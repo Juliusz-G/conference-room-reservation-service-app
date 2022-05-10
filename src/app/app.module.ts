@@ -8,13 +8,15 @@ import {HttpClientModule} from "@angular/common/http";
 import {OrganisationService} from "./services/organisation.service";
 import { ConferenceroomComponent } from './components/conferenceroom/conferenceroom.component';
 import { ConferenceRoomComponent } from './components/conference-room/conference-room.component';
+import { ReservationComponent } from './components/reservation/reservation.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     OrganisationComponent,
     ConferenceroomComponent,
-    ConferenceRoomComponent
+    ConferenceRoomComponent,
+    ReservationComponent
   ],
   imports: [
     BrowserModule,
