@@ -6,11 +6,15 @@ import {AppComponent} from './app.component';
 import {OrganisationComponent} from './components/organisation/organisation.component';
 import {HttpClientModule} from "@angular/common/http";
 import {OrganisationService} from "./services/organisation.service";
+import { ConferenceroomComponent } from './components/conferenceroom/conferenceroom.component';
+import { ConferenceRoomComponent } from './components/conference-room/conference-room.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    OrganisationComponent
+    OrganisationComponent,
+    ConferenceroomComponent,
+    ConferenceRoomComponent
   ],
   imports: [
     BrowserModule,
