@@ -1,1 +1,108 @@
-<p>reservation works!</p>
+<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+<div class="container bootstrap snippets bootdey">
+  <div class="container" id="main-container">
+  <div class="row">
+<!--    <a class="nav-link" (click)="onOpenModal(null, 'add')">New Reservation <span class="sr-only">(current)</span></a>-->
+<!--    <button><a class="nav-link" (click)="onOpenModal(reservation, 'add')">New Reservation<span class="sr-only">(current)</span></a></button>-->
+    <!--    (click)="onOpenModal(reservation, 'add')"-->
+    <div class="col-lg-12">
+      <div class="main-box no-header clearfix">
+        <div class="main-box-body clearfix">
+          <h4><a routerLink="add-reservation" routerLinkActive="active">Add Reservation</a></h4>
+          <div class="table-responsive">
+            <table class="table user-list">
+              <caption><h2>List of reservations:</h2></caption>
+              <thead>
+              <tr>
+                <th><span>Reservation Name/ID</span></th>
+                <th><span>Conference Room Name</span></th>
+                <th><span>Start Time</span></th>
+                <th><span>End Time</span></th>
+                <th><span></span></th>
+              </tr>
+              </thead>
+<!--              <div *ngFor="let reservation of reservations">-->
+              <tbody *ngFor="let reservation of reservations">
+
+                <tr>
+                  <td>
+                    <h5>{{reservation?.id}}</h5>
+                  </td>
+                  <td>
+                    <h5>{{reservation?.conferenceRoom}}</h5>
+                  </td>
+                  <td>
+                    <h5>{{reservation?.startDateTime}}</h5>
+                  </td>
+                  <td>
+                    <h5>{{reservation?.endDateTime}}</h5>
+                  </td>
+                  <td style="width: 20%;">
+                    <a href="#" class="table-link  text-warning">
+                    <span class="fa-stack">
+                      <i class="fa fa-square fa-stack-2x"></i>
+                      <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+                    </span>
+                    </a>
+                    <a href="#" class="table-link  text-info">
+                    <span class="fa-stack">
+                      <i class="fa fa-square fa-stack-2x"></i>
+                      <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                    </span>
+                    </a>
+                    <a (click)="deleteReservation(reservation.id)" href="#" class="table-link danger">
+                    <span class="fa-stack">
+                      <i class="fa fa-square fa-stack-2x"></i>
+                      <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                    </span>
+                    </a>
+                  </td>
+                </tr>
+
+              </tbody>
+<!--              </div>-->
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+
+
+<!-- Add Employee Modal -->
+<div class="modal fade" id="addReservationModal" tabindex="-1" aria-labelledby="addReservationModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="addReservationModalLabel">Add Reservation</h3>
+<!--        <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--          <span aria-hidden="true">&times;</span>-->
+<!--        </button>-->
+      </div>
+      <div class="modal-body">
+        <form #addForm="ngForm" (ngSubmit)="onAddReservation(addForm)">
+          <div class="form-group">
+            <label for="name">Conference Room name</label>
+            <input type="text" ngModel name="conferenceRoom" class="form-control" id="conferenceRoom" placeholder="Conference Room" >
+          </div>
+          <div class="form-group">
+            <label for="name">Start time</label>
+            <input type="text" ngModel name="start" class="form-control" id="start" placeholder="Start time" >
+          </div>
+          <div class="form-group">
+            <label for="name">End time</label>
+            <input type="text" ngModel name="end" class="form-control" id="end" placeholder="End time" >
+          </div>
+          <div class="modal-footer">
+            <button type="button" id="add-reservation-form" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary">Save changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
