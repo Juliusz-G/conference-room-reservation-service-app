@@ -24,10 +24,11 @@ export class OrganisationAddComponent implements OnInit {
     description:new FormControl('',Validators.required)
   });
 
-  saveOrganisation(saveOrganisation) {
+  saveOrganisation() {
     this.organisation = new Organisation();
     this.organisation.name = this.OrganisationName!.value;
     this.organisation.description = this.OrganisationDescription!.value;
+    this.organisation.conferenceRooms = [];
     this.submitted = true;
     this.save();
   }

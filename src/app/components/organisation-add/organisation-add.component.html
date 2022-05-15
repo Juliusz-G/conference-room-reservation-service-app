@@ -3,18 +3,18 @@
   <div class="col-sm-4"></div>
   <div class="col-sm-4" >
     <div [hidden]="submitted" style="width: 400px;">
-      <form [formGroup]="organisationsaveform" #saveorganisation (ngSubmit)="saveOrganisation(saveOrganisation)">
+      <form [formGroup]="organisationsaveform" (ngSubmit)="saveOrganisation()">
         <div class="form-group">
           <label for="name">Organisation Name</label>
-          <input type="text" class="form-control"  formControlName="name" data-toggle="tooltip"
+          <input id="name" type="text" class="form-control"  data-toggle="tooltip"
                  data-placement="right" title="Enter Organisation Name" >
-          <div class="alert alert-danger" *ngIf = "(OrganisationName.touched) && (OrganisationName.invalid)"
+          <div class="alert alert-danger" *ngIf = "(OrganisationName!.touched!) && (OrganisationName!.invalid!)"
                style="margin-top: 5px;">
-            <span *ngIf="OrganisationName.errors.required">Organisation name is required</span>
-            <span *ngIf = "OrganisationName.errors.minlength">
+            <span *ngIf="OrganisationName!.errors?.['required']">Organisation name is required</span>
+            <span *ngIf = "OrganisationName!.errors?.['minlength']">
                             MinLength Error
                         </span>
-            <span *ngIf = "OrganisationName.errors.maxlength">
+            <span *ngIf = "OrganisationName!.errors?.['maxlength']!">
                             MaxLength Error
                         </span>
           </div>
@@ -22,11 +22,11 @@
 
         <div class="form-group">
           <label for="description">Organisation Description</label>
-          <input type="text" class="form-control" formControlName="description"
+          <input id="description" type="text" class="form-control"
                  data-toggle="tooltip" data-placement="right" title="Enter Organisation description">
-          <div class="alert alert-danger" *ngIf = "(OrganisationDescription.touched) && (OrganisationDescription.invalid)"
+          <div class="alert alert-danger" *ngIf = "(OrganisationDescription!.touched) && (OrganisationDescription!.invalid)"
                style="margin-top: 5px;">
-            <span *ngIf="OrganisationDescription.errors.required">Student Email is Required</span>
+            <span *ngIf="OrganisationDescription!.errors?.['required']">Organisation description is Required</span>
           </div>
         </div>
 
