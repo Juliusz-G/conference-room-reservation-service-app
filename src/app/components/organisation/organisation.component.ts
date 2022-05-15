@@ -12,7 +12,6 @@ import {ConferenceRoom} from "../../models/conference-room";
 export class OrganisationComponent implements OnInit {
 
   public organisations: Organisation[] = [];
-  organisation: Organisation = new Organisation();
 
   constructor(private organisationService: OrganisationService) {
   }
@@ -21,8 +20,6 @@ export class OrganisationComponent implements OnInit {
     this.getAllOrganisations();
   }
 
-
-}
 
   public getAllOrganisations(): void {
     this.organisationService.getAllOrganisations().subscribe(
