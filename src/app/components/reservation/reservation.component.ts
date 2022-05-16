@@ -44,44 +44,35 @@ export class ReservationComponent implements OnInit {
       );
   }
 
+  public addReservation(addForm: NgForm): void {
+      document.getElementById('add-reservation-form')?.click();
+      this.reservationService.addReservation(addForm.value).subscribe(
+           (response: Reservation) => {
+             console.log(response);
+             this.getReservations();
+             addForm.reset();
+           },
+           (error: HttpErrorResponse) => {
+             alert(error.message);
+             addForm.reset();
+           }
+      );
+  }
 
+  onSubmit(){
+  }
 
-
-
-    public onAddReservation(addForm: NgForm): void {
-          document.getElementById('add-reservation-form')?.click();
-          this.reservationService.addReservation(addForm.value).subscribe(
-            (response: Reservation) => {
-              console.log(response);
-              this.getReservations();
-              addForm.reset();
-            },
-            (error: HttpErrorResponse) => {
-              alert(error.message);
-              addForm.reset();
-            }
-          );
+  public updateReservation(reservation: Reservation): void {
+    this.reservationService.updateReservation(reservation).subscribe(
+      (response: Reservation) => {
+        console.log(response);
+        this.getReservations();
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
       }
+    );
+  }
 
-//       public onOpenModal(reservation: Reservation, mode: string): void {
-//             const container = document.getElementById('main-container');
-//             const button = document.createElement('button');
-//             button.type = 'button';
-//             button.style.display = 'none';
-//             button.setAttribute('data-toggle', 'modal');
-//             if (mode === 'add') {
-//               button.setAttribute('data-target', '#addReservationModal');
-//             }
-//       //       if (mode === 'edit') {
-//       //         this.editEmployee = employee;
-//       //         button.setAttribute('data-target', '#updateEmployeeModal');
-//       //       }
-//       //       if (mode === 'delete') {
-//       //         this.deleteEmployee = employee;
-//       //         button.setAttribute('data-target', '#deleteEmployeeModal');
-//       //       }
-//             container?.appendChild(button);
-//             button.click();
-//           }
 
 }
