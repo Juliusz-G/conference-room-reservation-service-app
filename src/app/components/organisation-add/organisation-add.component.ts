@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {OrganisationService} from "../../services/organisation.service";
 import {Organisation} from "../../models/organisation";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {NgForm} from "@angular/forms";
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-organisation-add',
@@ -13,43 +14,64 @@ export class OrganisationAddComponent implements OnInit {
   constructor(private organisationService: OrganisationService) { }
 
   organisation: Organisation = new Organisation();
-  submitted:boolean = false;
+  organisations: Organisation[] = [];
+
 
   ngOnInit(): void {
-    this.submitted = false;
+    this.getOrganisations();
+    console.log(this.organisations)
   }
 
-  organisationsaveform = new FormGroup({
-    name:new FormControl('',[Validators.required, Validators.minLength(2), Validators.maxLength(20)]),
-    description:new FormControl('',Validators.required)
-  });
-
-  saveOrganisation() {
-    this.organisation = new Organisation();
-    this.organisation.name = this.OrganisationName!.value;
-    this.organisation.description = this.OrganisationDescription!.value;
-    this.organisation.conferenceRooms = [];
-    this.submitted = true;
-    this.save();
+  public addOrganisation(addForm: NgForm): void {
+    document.getElementById('add-organisation-form')?.click();
+    this.organisationService.addOrganisation(addForm.value).subscribe(
+      (response: Organisation) => {
+        console.log(response);
+        this.getOrganisations();
+        addForm.reset();
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+        addForm.reset();
+      }
+    );
   }
 
-  save() {
-    this.organisationService.addOrganisation(this.organisation).subscribe(
-      data => console.log(data),
-      error => console.log(error));
-      this.organisation = new Organisation();
+  public getOrganisations(): void {
+    this.organisationService.getAllOrganisations().subscribe(
+      (response: Organisation[]) => {
+        this.organisations = response;
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
   }
 
-  get OrganisationName() {
-    return this.organisationsaveform.get('name');
+  public updateOrganisation(organisation: Organisation): void {
+    this.organisationService.updateOrganisation(organisation).subscribe(
+      (response: Organisation) => {
+        console.log(response);
+        this.getOrganisations();
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
   }
 
-  get OrganisationDescription() {
-    return this.organisationsaveform.get('description')
+  public deleteOrganisation(orgnisation: Organisation): void {
+    this.organisationService.deleteOrganisation(orgnisation).subscribe(
+      (response: void) => {
+        this.getOrganisations();
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
   }
 
-  addOrganisationForm() {
-    this.submitted = false;
-    this.organisationsaveform.reset();
+  onSubmit(){
   }
+
 }

@@ -1,49 +1,81 @@
-<h3>Create Organisation</h3>
-<div class="row">
-  <div class="col-sm-4"></div>
-  <div class="col-sm-4" >
-    <div [hidden]="submitted" style="width: 400px;">
-      <form [formGroup]="organisationsaveform" (ngSubmit)="saveOrganisation()">
-        <div class="form-group">
-          <label for="name">Organisation Name</label>
-          <input id="name" type="text" class="form-control"  data-toggle="tooltip"
-                 data-placement="right" title="Enter Organisation Name" >
-          <div class="alert alert-danger" *ngIf = "(OrganisationName!.touched!) && (OrganisationName!.invalid!)"
-               style="margin-top: 5px;">
-            <span *ngIf="OrganisationName!.errors?.['required']">Organisation name is required</span>
-            <span *ngIf = "OrganisationName!.errors?.['minlength']">
-                            MinLength Error
-                        </span>
-            <span *ngIf = "OrganisationName!.errors?.['maxlength']!">
-                            MaxLength Error
-                        </span>
+<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+<div class="container bootstrap snippets bootdey">
+  <div class="container" id="main-container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="main-box no-header clearfix">
+          <div class="main-box-body clearfix">
+            <h4><a routerLink="add-organisation" routerLinkActive="active">Add Organisation</a></h4>
+            <router-outlet></router-outlet>
+            <div class="table-responsive">
+              <table class="table user-list">
+                <caption><h2>List of organisations:</h2></caption>
+                <thead>
+                <tr>
+                  <th><span>Organisation name</span></th>
+                  <th><span>description</span></th>
+                  <th><span></span></th>
+                </tr>
+                </thead>
+
+                <tbody *ngFor="let organisation of organisations">
+
+                <tr>
+                  <td>
+                    <h5>{{organisation?.name}}</h5>
+                  </td>
+                  <td>
+                    <h5>{{organisation?.description}}</h5>
+                  </td>
+                  <td style="width: 20%;">
+                    <a href="#" class="table-link  text-warning">
+                    <span class="fa-stack">
+                      <i class="fa fa-square fa-stack-2x"></i>
+                      <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+                    </span>
+                    </a>
+                    <a (click)="updateOrganisation(organisation)" href="#" class="table-link  text-info">
+                    <span class="fa-stack">
+                      <i class="fa fa-square fa-stack-2x"></i>
+                      <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                    </span>
+                    </a>
+                    <a (click)="deleteOrganisation(organisation)" href="#" class="table-link danger">
+                    <span class="fa-stack">
+                      <i class="fa fa-square fa-stack-2x"></i>
+                      <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                    </span>
+                    </a>
+                  </td>
+                </tr>
+
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
-
-        <div class="form-group">
-          <label for="description">Organisation Description</label>
-          <input id="description" type="text" class="form-control"
-                 data-toggle="tooltip" data-placement="right" title="Enter Organisation description">
-          <div class="alert alert-danger" *ngIf = "(OrganisationDescription!.touched) && (OrganisationDescription!.invalid)"
-               style="margin-top: 5px;">
-            <span *ngIf="OrganisationDescription!.errors?.['required']">Organisation description is Required</span>
-          </div>
-        </div>
-
-
-        <button type="submit" class="btn btn-success">Submit</button>
-      </form>
+      </div>
     </div>
   </div>
-  <div class="col-sm-4"></div>
 </div>
-<div class="row">
-  <div class="col-sm-4"></div>
-  <div class="col-sm-4">
-    <div [hidden]="!submitted">
-      <h4>Organisation Added SuccessFully!</h4>
-      <button (click)="addOrganisationForm()" class='btn btn-primary'>Add More Organisation</button>
+
+<div class="col-md-6 offset-md-3">
+  <h3> Create new organisation </h3>
+  <form #addForm="ngForm" id="add-organisation-form" (ngSubmit) = "onSubmit()">
+
+    <div class="form-group">
+      <label>Organisation name</label>
+      <input type="text" class ="form-control" id = "name"
+             ngModel name = "name" name = "name">
     </div>
-  </div>
-  <div class="col-sm-4"></div>
+    <div class="form-group">
+      <label>Organisation description</label>
+      <input type="text" class ="form-control" id = "description"
+             ngModel name = "description" name = "description">
+    </div>
+
+    <button class = "btn btn-success" (click)="addOrganisation(addForm)"
+            type ="submit">Submit</button>
+  </form>
 </div>
+
