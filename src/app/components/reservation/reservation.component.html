@@ -8,8 +8,8 @@
           <h4><a routerLink="add-reservation" routerLinkActive="active">Add Reservation</a></h4>
           <router-outlet></router-outlet>
           <div class="table-responsive">
+            <h2>List of reservations:</h2>
             <table class="table user-list">
-              <caption><h2>List of reservations:</h2></caption>
               <thead>
               <tr>
                 <th><span>Reservation Name/ID</span></th>
@@ -19,9 +19,7 @@
                 <th><span></span></th>
               </tr>
               </thead>
-
               <tbody *ngFor="let reservation of reservations">
-
                 <tr>
                   <td>
                     <h5>{{reservation?.id}}</h5>
@@ -42,7 +40,8 @@
                       <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
                     </span>
                     </a>
-                    <a (click)="updateReservation(reservation)" href="#" class="table-link  text-info">
+                    <a (click) = "updateReservation(reservation.id)" href="#" class="table-link  text-info">
+<!--                      (click) = "updateReservation(reservation.id)"-->
                     <span class="fa-stack">
                       <i class="fa fa-square fa-stack-2x"></i>
                       <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
@@ -56,7 +55,6 @@
                     </a>
                   </td>
                 </tr>
-
               </tbody>
             </table>
           </div>
