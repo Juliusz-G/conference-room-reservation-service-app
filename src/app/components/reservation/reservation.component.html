@@ -83,24 +83,24 @@
 <!--        </button>-->
       </div>
       <div class="modal-body">
-        <form #addForm="ngForm" (ngSubmit)="onAddReservation(addForm)">
-          <div class="form-group">
-            <label for="name">Conference Room name</label>
-            <input type="text" ngModel name="conferenceRoom" class="form-control" id="conferenceRoom" placeholder="Conference Room" >
-          </div>
-          <div class="form-group">
-            <label for="name">Start time</label>
-            <input type="text" ngModel name="start" class="form-control" id="start" placeholder="Start time" >
-          </div>
-          <div class="form-group">
-            <label for="name">End time</label>
-            <input type="text" ngModel name="end" class="form-control" id="end" placeholder="End time" >
-          </div>
-          <div class="modal-footer">
-            <button type="button" id="add-reservation-form" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary">Save changes</button>
-          </div>
-        </form>
+<!--        <form #addForm="ngForm" (ngSubmit)="onAddReservation(addForm)">-->
+<!--          <div class="form-group">-->
+<!--            <label for="name">Conference Room name</label>-->
+<!--            <input type="text" ngModel name="conferenceRoom" class="form-control" id="conferenceRoom" placeholder="Conference Room" >-->
+<!--          </div>-->
+<!--          <div class="form-group">-->
+<!--            <label for="name">Start time</label>-->
+<!--            <input type="text" ngModel name="start" class="form-control" id="start" placeholder="Start time" >-->
+<!--          </div>-->
+<!--          <div class="form-group">-->
+<!--            <label for="name">End time</label>-->
+<!--            <input type="text" ngModel name="end" class="form-control" id="end" placeholder="End time" >-->
+<!--          </div>-->
+<!--          <div class="modal-footer">-->
+<!--            <button type="button" id="add-reservation-form" class="btn btn-secondary" data-dismiss="modal">Close</button>-->
+<!--            <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary">Save changes</button>-->
+<!--          </div>-->
+<!--        </form>-->
       </div>
     </div>
   </div>
