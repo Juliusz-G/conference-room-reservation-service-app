@@ -9,7 +9,8 @@ import {OrganisationService} from "./services/organisation.service";
 import { ConferenceRoomComponent } from './components/conference-room/conference-room.component';
 import { ReservationComponent } from './components/reservation/reservation.component';
 import { OrganisationAddComponent } from './components/organisation-add/organisation-add.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {AddReservationComponent} from "./components/reservation/add-reservation/add-reservation.component";
 
 @NgModule({
   declarations: [
@@ -17,13 +18,15 @@ import {ReactiveFormsModule} from "@angular/forms";
     OrganisationComponent,
     ConferenceRoomComponent,
     ReservationComponent,
-    OrganisationAddComponent
+    OrganisationAddComponent,
+    AddReservationComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule, // Configures the dependency injector for HttpClient
-    ReactiveFormsModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [OrganisationService],
   bootstrap: [AppComponent]

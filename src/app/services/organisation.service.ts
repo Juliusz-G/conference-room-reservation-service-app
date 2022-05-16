@@ -20,12 +20,12 @@ export class OrganisationService {
     return this.http.get<Organisation[]>(`${this.apiUrl}/organisation/all`);
   }
 
-  public addOrganisation(organisation: Organisation): Observable<Organisation[]> {
-    return this.http.post<Organisation[]>(`${this.apiUrl}/organisation/create`, organisation);
+  public addOrganisation(organisation: Organisation): Observable<Organisation> {
+    return this.http.post<Organisation>(`${this.apiUrl}/organisation/create`, organisation);
   }
 
-  public updateOrganisation(organisation: Organisation): Observable<Organisation[]> {
-    return this.http.put<Organisation[]>(`${this.apiUrl}/organisation/create`, organisation);
+  public updateOrganisation(organisation: Organisation): Observable<Organisation> {
+    return this.http.put<Organisation>(`${this.apiUrl}/organisation/create`, organisation);
   }
 
   public deleteOrganisation(organisation: Organisation): Observable<void> {
