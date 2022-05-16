@@ -6,22 +6,24 @@ import {AppComponent} from './app.component';
 import {OrganisationComponent} from './components/organisation/organisation.component';
 import {HttpClientModule} from "@angular/common/http";
 import {OrganisationService} from "./services/organisation.service";
-import { ConferenceroomComponent } from './components/conferenceroom/conferenceroom.component';
 import { ConferenceRoomComponent } from './components/conference-room/conference-room.component';
 import { ReservationComponent } from './components/reservation/reservation.component';
+import { OrganisationAddComponent } from './components/organisation-add/organisation-add.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
     AppComponent,
     OrganisationComponent,
-    ConferenceroomComponent,
     ConferenceRoomComponent,
-    ReservationComponent
+    ReservationComponent,
+    OrganisationAddComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule // Configures the dependency injector for HttpClient
+    HttpClientModule, // Configures the dependency injector for HttpClient
+    ReactiveFormsModule
   ],
   providers: [OrganisationService],
   bootstrap: [AppComponent]
