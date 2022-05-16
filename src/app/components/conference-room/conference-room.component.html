@@ -1,1 +1,46 @@
 <p>conference-room works!</p>
+<div class="container">
+  <h1>CONFERENCE ROOMS</h1>
+
+  <a href="#" routerLink="/conference-room/create/" class="btn btn-success">Create New Conference Room</a>
+
+  <table class="table table-bordered">
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Identifier</th>
+      <th>Level</th>
+      <th>Availability</th>
+      <th>Standing places</th>
+      <th>Sitting places</th>
+      <th>Reservation lists</th>
+      <th>Organisation</th>
+      <th>Action</th>
+    </tr>
+    <tr *ngFor="let conferenceRoom of conferenceRooms">
+      <td>{{ conferenceRoom.id }}</td>
+      <td>{{ conferenceRoom.name }}</td>
+      <td>{{ conferenceRoom.identifier }}</td>
+      <td>{{ conferenceRoom.level }}</td>
+
+      <ng-container *ngIf="conferenceRoom.availability === true;else notAvailable">
+        <td><i class="bi bi-check-circle-fill"></i></td>
+      </ng-container>
+      <ng-template #notAvailable>
+        <ng-container>
+          <td><i class="bi bi-x-circle-fill"></i></td>
+        </ng-container>
+      </ng-template>
+
+      <td>{{ conferenceRoom.numberOfStandingPlaces }}</td>
+      <td>{{ conferenceRoom.numberOfSittingPlaces }}</td>
+      <td>{{ conferenceRoom.reservationList }}</td>
+      <td>{{ conferenceRoom.organisation }}</td>
+      <td>
+        <a href="#" [routerLink]="['/conference-room/', conferenceRoom.id, 'view']" class="btn btn-info">View</a>
+        <a href="#" [routerLink]="['/conference-room/', conferenceRoom.id, 'edit']" class="btn btn-primary">Edit</a>
+        <button type="button" (click)="deleteConferenceRoom(conferenceRoom.id)" class="btn btn-danger">Delete</button>
+      </td>
+    </tr>
+  </table>
+</div>

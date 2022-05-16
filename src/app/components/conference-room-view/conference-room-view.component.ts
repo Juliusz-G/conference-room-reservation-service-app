@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ConferenceRoom} from "../../models/conference-room";
+import {ConferenceRoomService} from "../../services/conference-room.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-conference-room-view',
@@ -7,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConferenceRoomViewComponent implements OnInit {
 
-  constructor() { }
+  conferenceRoomId!: number;
+  conferenceRoom!: ConferenceRoom;
+
+  constructor(
+    public conferenceRoomService: ConferenceRoomService,
+    private route: ActivatedRoute
+  ) {
+  }
 
   ngOnInit(): void {
+    this.conferenceRoomId = this.route.snapshot.params['conferenceRoomId'];
+
+    this.conferenceRoomService.getConferenceRoom(this.conferenceRoomId).subscribe((data: ConferenceRoom) => {
+      this.conferenceRoom = data;
+    });
   }
 
 }
