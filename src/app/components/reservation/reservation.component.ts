@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { ReservationService } from 'src/app/services/reservation.service';
 import { Reservation } from 'src/app/models/reservation';
@@ -15,7 +16,7 @@ export class ReservationComponent implements OnInit {
 //   public reservation: Reservation | null;
 //   public reservation: Reservation;
 
-  constructor(private reservationService: ReservationService) { }
+  constructor(private reservationService: ReservationService, private router: Router) { }
 
   ngOnInit() {
     this.getReservations();
@@ -62,17 +63,21 @@ export class ReservationComponent implements OnInit {
   onSubmit(){
   }
 
-  public updateReservation(reservation: Reservation): void {
-    this.reservationService.updateReservation(reservation).subscribe(
-      (response: Reservation) => {
-        console.log(response);
-        this.getReservations();
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-      }
-    );
-  }
+  updateReservation(id: number){
+      this.router.navigate(['update-reservation', id]);
+    }
+
+//   public updateReservation(reservation: Reservation): void {
+//     this.reservationService.updateReservation(reservation).subscribe(
+//       (response: Reservation) => {
+//         console.log(response);
+//         this.getReservations();
+//       },
+//       (error: HttpErrorResponse) => {
+//         alert(error.message);
+//       }
+//     );
+//   }
 
 
 }
