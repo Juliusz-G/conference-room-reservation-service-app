@@ -60,8 +60,8 @@ export class OrganisationAddComponent implements OnInit {
     );
   }
 
-  public deleteOrganisation(orgnisation: Organisation): void {
-    this.organisationService.deleteOrganisation(orgnisation).subscribe(
+  public deleteOrganisation(id: number): void {
+    this.organisationService.deleteOrganisation(id).subscribe(
       (response: void) => {
         this.getOrganisations();
       },

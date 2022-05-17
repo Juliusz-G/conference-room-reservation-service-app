@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Organisation} from "../models/organisation";
 import {environment} from "../../environments/environment";
@@ -9,6 +9,11 @@ import {environment} from "../../environments/environment";
 })
 export class OrganisationService {
   private apiUrl = environment.apiUrl;
+
+  private httpOptions = {
+    headers: new HttpHeaders({'Content-Type':  'application/json'})
+  };
+
 
   constructor(private http: HttpClient) { }
 
@@ -25,11 +30,13 @@ export class OrganisationService {
   }
 
   public updateOrganisation(organisation: Organisation): Observable<Organisation> {
-    return this.http.put<Organisation>(`${this.apiUrl}/organisation/create`, organisation);
+    return this.http.put<Organisation>(`${this.apiUrl}/organisation/update`, organisation, this.httpOptions);
   }
 
-  public deleteOrganisation(organisation: Organisation): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/organisation/remove`);
+  public deleteOrganisation(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/organisation/remove/${id}`);
   }
 
 }
+
+
