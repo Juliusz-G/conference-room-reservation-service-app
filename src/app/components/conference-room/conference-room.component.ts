@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ConferenceRoom} from "../../models/conference-room";
+import {ConferenceRoomService} from "../../services/conference-room.service";
 
 @Component({
   selector: 'app-conference-room',
@@ -7,9 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConferenceRoomComponent implements OnInit {
 
-  constructor() { }
+  conferenceRooms: ConferenceRoom[] = [];
+
+  constructor(public conferenceRoomService: ConferenceRoomService) {
+  }
 
   ngOnInit(): void {
+    this.conferenceRoomService.getConferenceRooms().subscribe((data: ConferenceRoom[])=>{
+      this.conferenceRooms = data;
+      console.log(this.conferenceRooms);
+    })
+  }
+
+  deleteConferenceRoom(conferenceRoomId: number) {
+    this.conferenceRoomService.deleteConferenceRoom(conferenceRoomId).subscribe(() => {
+      this.conferenceRooms = this.conferenceRooms.filter(item => item.id !== conferenceRoomId);
+      console.log('Conference room deleted successfully!');
+    })
   }
 
 }
