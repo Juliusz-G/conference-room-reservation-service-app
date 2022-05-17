@@ -1,9 +1,7 @@
-<p>conference-room-create works!</p>
 <div class="container">
   <h1>Create New Conference Room</h1>
 
-  <a href="#" routerLink="/conference-room" class="btn btn-primary">Back</a>
-
+  <!-- <a routerLink="/conference-room" class="btn btn-primary">Back</a> -->
   <form [formGroup]="form" (ngSubmit)="submit()">
 
     <div class="form-group">
@@ -72,6 +70,7 @@
 <!--      </div>-->
 <!--    </div>-->
 
+    <a routerLink="/conference-room" class="btn btn-primary">Back</a>
     <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Submit</button>
   </form>
 </div>
