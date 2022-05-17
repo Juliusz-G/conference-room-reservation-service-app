@@ -9,10 +9,10 @@ import { OrganisationAddComponent } from './components/organisation-add/organisa
 
 const routes: Routes = [
   {path: 'conference-room', component: ConferenceRoomComponent},
-  {path: 'conference-room/:conferenceRoomId/edit', component: ConferenceRoomEditComponent},
-  {path: 'conference-room/create', component: ConferenceRoomCreateComponent},
-  {path: 'conference-room/:conferenceRoomId/view', component: ConferenceRoomViewComponent},
-  {path: 'conference-room/:conferenceRoomId/view', component: ConferenceRoomViewComponent},
+  // {path: 'conference-room/:conferenceRoomId/edit', component: ConferenceRoomEditComponent},
+  // {path: 'conference-room/create', component: ConferenceRoomCreateComponent},
+  // {path: 'conference-room/:conferenceRoomId/view', component: ConferenceRoomViewComponent},
+  // {path: 'conference-room/:conferenceRoomId/view', component: ConferenceRoomViewComponent},
   {path: 'ogranisation', component: OrganisationComponent},
   {path: 'ogranisation-add', component: OrganisationAddComponent},
   {path: 'add-reservation', component: ReservationComponent},
