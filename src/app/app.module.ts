@@ -11,6 +11,9 @@ import { ReservationComponent } from './components/reservation/reservation.compo
 import { OrganisationAddComponent } from './components/organisation-add/organisation-add.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {AddReservationComponent} from "./components/reservation/add-reservation/add-reservation.component";
+import { ConferenceRoomCreateComponent } from './components/conference-room-create/conference-room-create.component';
+import { ConferenceRoomEditComponent } from './components/conference-room-edit/conference-room-edit.component';
+import { ConferenceRoomViewComponent } from './components/conference-room-view/conference-room-view.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,10 @@ import {AddReservationComponent} from "./components/reservation/add-reservation/
     ConferenceRoomComponent,
     ReservationComponent,
     OrganisationAddComponent,
-    AddReservationComponent
+    AddReservationComponent,
+    ConferenceRoomCreateComponent,
+    ConferenceRoomEditComponent,
+    ConferenceRoomViewComponent
   ],
   imports: [
     BrowserModule,
