@@ -17,7 +17,6 @@ const routes: Routes = [
   {path: 'ogranisation-add', component: OrganisationAddComponent},
   {path: 'add-reservation', component: ReservationComponent},
   {path: 'update-reservation/:id', component: UpdateReservationComponent},
-  // {path: '', redirectTo: 'app-root', pathMatch: 'full'},
 ];
 
 @NgModule({
