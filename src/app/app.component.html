@@ -1,8 +1,39 @@
 <!--passes the organisation component html-->
-<app-organisation></app-organisation>
-<hr>
-<app-reservation></app-reservation>
-<hr>
-<app-organisation-add></app-organisation-add>
-<hr>
-<app-conference-room></app-conference-room>
+<!--<app-organisation></app-organisation>-->
+<!--<hr>-->
+<!--<app-reservation></app-reservation>-->
+<!--<hr>-->
+<!--<app-organisation-add></app-organisation-add>-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a routerLink='' class="navbar-brand" style="color:white;">Reservation App</a>
+  </nav>
+<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+    <ul class = "navbar-nav">
+        <li class = "nav-item">
+            <a routerLink='' class="a">Reservation App</a>
+        </li>
+        <li class = "nav-item">
+            <a routerLink='add-reservation'>Add Reservation</a>
+        </li>
+        <li class = "nav-item">
+            <a routerLink='add-reservation'>Add Reservation</a>
+        </li>
+        <li class = "nav-item">
+            <a routerLink='add-reservation'>Add Reservation</a>
+        </li>
+    </ul>
+</nav>
+<a routerLink='' class="a">Reservation App</a>
+<a routerLink='add-reservation'>Add Reservation</a>
+<a routerLink='ogranisation'>Organisation</a>
+<a routerLink='ogranisation-add'>Add Organisation</a>
+<a routerLink='conference-room'>Conference Room</a>
+<a routerLink='conference-room/create'>Add Conference Room</a>
+
+<router-outlet></router-outlet>
+
+<footer class = "footer">
+    <div class = "container">
+        <span>Footer example but in wrong place ATM</span>
+    </div>
+</footer>

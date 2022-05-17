@@ -40,19 +40,19 @@
                       <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
                     </span>
                     </a>
-                    <a (click) = "updateReservation(reservation.id)" href="#" class="table-link  text-info">
+                    <button (click) = "updateReservation(reservation.id)" class="table-link  text-info">
 <!--                      (click) = "updateReservation(reservation.id)"-->
                     <span class="fa-stack">
                       <i class="fa fa-square fa-stack-2x"></i>
                       <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
                     </span>
-                    </a>
-                    <a (click)="deleteReservation(reservation.id)" href="#" class="table-link danger">
+                    </button>
+                    <button (click)="deleteReservation(reservation.id)" class="table-link danger">
                     <span class="fa-stack">
                       <i class="fa fa-square fa-stack-2x"></i>
                       <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
                     </span>
-                    </a>
+                    </button>
                   </td>
                 </tr>
               </tbody>
