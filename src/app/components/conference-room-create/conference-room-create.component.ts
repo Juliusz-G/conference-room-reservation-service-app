@@ -38,7 +38,7 @@ export class ConferenceRoomCreateComponent implements OnInit {
     console.log(this.form.value);
     this.conferenceRoomService.createConferenceRoom(this.form.value).subscribe(() => {
       console.log('Conference room created successfully!');
-      this.router.navigateByUrl('').then(() => confirm("Conference room created successfully!"));
+      this.router.navigateByUrl('/conference-room').then(() => confirm("Conference room created successfully!"));
     })
   }
 

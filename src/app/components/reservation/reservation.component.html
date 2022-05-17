@@ -1,92 +1,54 @@
-<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
-<div class="container bootstrap snippets bootdey">
-  <div class="container" id="main-container">
-  <div class="row">
-    <div class="col-lg-12">
-      <div class="main-box no-header clearfix">
-        <div class="main-box-body clearfix">
-          <h4><a routerLink="add-reservation" routerLinkActive="active">Add Reservation</a></h4>
-          <router-outlet></router-outlet>
-          <div class="table-responsive">
-            <h2>List of reservations:</h2>
-            <table class="table user-list">
-              <thead>
-              <tr>
-                <th><span>Reservation Name/ID</span></th>
-                <th><span>Conference Room Name</span></th>
-                <th><span>Start Time</span></th>
-                <th><span>End Time</span></th>
-                <th><span></span></th>
-              </tr>
-              </thead>
-              <tbody *ngFor="let reservation of reservations">
-                <tr>
-                  <td>
-                    <h5>{{reservation?.id}}</h5>
-                  </td>
-                  <td>
-                    <h5>{{reservation?.conferenceRoom}}</h5>
-                  </td>
-                  <td>
-                    <h5>{{reservation?.startDateTime}}</h5>
-                  </td>
-                  <td>
-                    <h5>{{reservation?.endDateTime}}</h5>
-                  </td>
-                  <td style="width: 20%;">
-                    <a href="#" class="table-link  text-warning">
-                    <span class="fa-stack">
-                      <i class="fa fa-square fa-stack-2x"></i>
-                      <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
-                    </span>
-                    </a>
-                    <button (click) = "updateReservation(reservation.id)" class="table-link  text-info">
-<!--                      (click) = "updateReservation(reservation.id)"-->
-                    <span class="fa-stack">
-                      <i class="fa fa-square fa-stack-2x"></i>
-                      <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
-                    </span>
-                    </button>
-                    <button (click)="deleteReservation(reservation.id)" class="table-link danger">
-                    <span class="fa-stack">
-                      <i class="fa fa-square fa-stack-2x"></i>
-                      <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
-                    </span>
-                    </button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
+<div class="container" id="main-container">
+
+  <div class="d-flex justify-content-start">
+    <h1>RESERVATIONS</h1>
   </div>
+  <div class="d-flex justify-content-end">
+    <a routerLink="/add-reservation" class="btn btn-success">Create New Reservation</a>
   </div>
+
+  <table class="table table-bordered">
+    <tr>
+      <th><span>Reservation Name/ID</span></th>
+      <th><span>Conference Room Name</span></th>
+      <th><span>Start Time</span></th>
+      <th><span>End Time</span></th>
+      <th><span></span></th>
+    </tr>
+    <tr *ngFor="let reservation of reservations">
+      <td>
+        <h5>{{reservation?.id}}</h5>
+      </td>
+      <td>
+        <h5>{{reservation?.conferenceRoom}}</h5>
+      </td>
+      <td>
+        <h5>{{reservation?.startDateTime}}</h5>
+      </td>
+      <td>
+        <h5>{{reservation?.endDateTime}}</h5>
+      </td>
+      <td style="width: 20%;">
+        <a href="#" class="table-link  text-warning">
+          <span class="fa-stack">
+            <i class="fa fa-square fa-stack-2x"></i>
+            <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+          </span>
+        </a>
+        <button (click)="updateReservation(reservation.id)" class="table-link  text-info">
+          <!--                      (click) = "updateReservation(reservation.id)"-->
+          <span class="fa-stack">
+            <i class="fa fa-square fa-stack-2x"></i>
+            <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+          </span>
+        </button>
+        <button (click)="deleteReservation(reservation.id)" class="table-link danger">
+          <span class="fa-stack">
+            <i class="fa fa-square fa-stack-2x"></i>
+            <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+          </span>
+        </button>
+      </td>
+    </tr>
+  </table>
 </div>
-
-<div class="col-md-6 offset-md-3">
-  <h3> Create new reservation </h3>
-  <form #addForm="ngForm" id="add-reservation-form" (ngSubmit) = "onSubmit()">
-
-    <div class="form-group">
-      <label>Conference room name</label>
-      <input type="text" class ="form-control" id = "conferenceRoom"
-             ngModel name = "conferenceRoom" name = "conferenceRoom">
-     </div>
-    <div class="form-group">
-      <label>Date and time START of reservation</label>
-      <input type="text" class ="form-control" id = "startDateTime"
-             ngModel name = "startDateTime" name = "startDateTime">
-    </div>
-    <div class="form-group">
-      <label>Date and time END of reservation</label>
-      <input type="text" class ="form-control" ngModel name= "endDateTime"
-             id = "endDateTime" name = "endDateTime">
-    </div>
-
-    <button class = "btn btn-success" (click)="addReservation(addForm)"
-            type ="submit">Submit</button>
-  </form>
-</div>
-

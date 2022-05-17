@@ -17,7 +17,7 @@ export class OrganisationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getAllOrganisations();
+//     this.getAllOrganisations();
   }
 
 
