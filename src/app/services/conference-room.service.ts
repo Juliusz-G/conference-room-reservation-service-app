@@ -19,7 +19,7 @@ export class ConferenceRoomService {
   }
 
   public getConferenceRooms(): Observable<ConferenceRoom[]> {
-    return this.http.get<ConferenceRoom[]>(`${this.apiUrl}/conference-room/all`).pipe(catchError(this.errorHandler));
+    return this.http.get<ConferenceRoom[]>(`${this.apiUrl}/conference-room`).pipe(catchError(this.errorHandler));
   }
 
   public getConferenceRoomsForOrganisation(organisationId: number): Observable<ConferenceRoom[]> {

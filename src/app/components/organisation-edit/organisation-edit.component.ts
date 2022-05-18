@@ -26,8 +26,8 @@ export class OrganisationEditComponent implements OnInit {
     });
 
     this.form = new FormGroup({
-      organisationName: new FormControl('', [Validators.required]),
-      organisationDescription: new FormControl('', [Validators.required])
+      name: new FormControl('', [Validators.required]),
+      description: new FormControl('', [Validators.required])
     })
   }
 

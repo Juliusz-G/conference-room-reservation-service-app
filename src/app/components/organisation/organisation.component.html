@@ -4,7 +4,7 @@
     <h1>ORGANISATIONS</h1>
   </div>
   <div class="d-flex justify-content-end">
-    <a routerLink="/ogranisation/create" class="btn btn-success">Create New Organisation</a>
+    <a routerLink="/organisation/create" class="btn btn-success">Create New Organisation</a>
   </div>
 
   <table class="table table-bordered">
@@ -20,11 +20,11 @@
       <td>
         <h5>{{organisation?.description}}</h5>
       </td>
-      <!-- <td>
-        <a href="#" [routerLink]="['/reservation/', organisation.id, 'view']" class="btn btn-info">View</a>
-        <a href="#" [routerLink]="['/reservation/', organisation.id, 'edit']" class="btn btn-primary">Edit</a>
+      <td>
+        <a href="#" [routerLink]="['/organisation/', organisation.id, '/view']" class="btn btn-info">View</a>
+        <a href="#" [routerLink]="['/organisation/', organisation.id, 'edit']" class="btn btn-primary">Edit</a>
         <button type="button" (click)="deleteOrganisation(organisation.id)" class="btn btn-danger">Delete</button>
-      </td> -->
+      </td>
     </tr>
   </table>
 </div>

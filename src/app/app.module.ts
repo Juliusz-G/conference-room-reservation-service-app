@@ -38,7 +38,7 @@ import { OrganisationEditComponent } from './components/organisation-edit/organi
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [OrganisationService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {

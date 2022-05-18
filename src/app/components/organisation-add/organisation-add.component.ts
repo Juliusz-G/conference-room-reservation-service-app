@@ -20,8 +20,8 @@ export class OrganisationAddComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = new FormGroup({
-      organisationName: new FormControl('', [Validators.required]),
-      organisationDescription: new FormControl('', [Validators.required])
+      name: new FormControl('', [Validators.required]),
+      description: new FormControl('', [Validators.required])
     });
    
   }
@@ -33,7 +33,7 @@ export class OrganisationAddComponent implements OnInit {
   submit(){
     this.organisationService.addOrganisation(this.form.value).subscribe(() => {
       console.log('Organisation created successfully!');
-      this.router.navigateByUrl('/organisation').then(() => alert("Organisation created successfully!"))
+      this.router.navigateByUrl('/ogranisation').then(() => alert("Organisation created successfully!"))
     })
   }
 }
