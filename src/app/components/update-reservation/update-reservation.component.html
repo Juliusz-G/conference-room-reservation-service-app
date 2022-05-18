@@ -1,26 +1,29 @@
-<div class="col-md-6 offset-md-3">
-  <h3> Update Reservation </h3>
-  <form (ngSubmit) = "onSubmit()">
+<div class="container">
+  <h1>Update Reservation</h1>
 
-    <div class="form-group">
-      <label>Conference room name</label>
-      <input type="text" class ="form-control" id = "conferenceRoom"
-             ngModel name = "conferenceRoom" name = "conferenceRoom">
+  <form [formGroup]="form" (ngSubmit)="submit()">
+      <div class="form-group">
+      <label for="conferenceRoom">Conference Room Name</label>
+      <input 
+      formControlName="conferenceRoom" 
+      id="conferenceRoom" 
+      type="text"
+      class="form-control">
+      <label for="startDateTime">Date and time START of reservation</label>
+      <input 
+      formControlName="startDateTime"  
+      id="startDateTime"  
+      type="text" 
+      class="form-control" 
+      name="startDateTime">
+      <label for="endDateTime">Date and time END of reservation</label>
+      <input 
+      formControlName="endDateTime"  
+      id="endDateTime"  
+      type="text" 
+      class="form-control"> 
     </div>
 
-    <div class="form-group">
-      <label>Date and time START of reservation</label>
-      <input type="text" class ="form-control" id = "startDateTime"
-             ngModel name = "startDateTime" name = "startDateTime">
-    </div>
-
-    <div class="form-group">
-      <label>Date and time END of reservation</label>
-      <input type="text" class ="form-control" ngModel name= "endDateTime"
-             id = "endDateTime" name = "endDateTime">
-    </div>
-
-    <button class = "btn btn-success" type ="submit">Submit</button>
-
+    <button class="btn btn-success" type ="submit">Submit</button>
   </form>
 </div>
