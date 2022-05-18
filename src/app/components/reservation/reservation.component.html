@@ -4,23 +4,23 @@
     <h1>RESERVATIONS</h1>
   </div>
   <div class="d-flex justify-content-end">
-    <a routerLink="/add-reservation" class="btn btn-success">Create New Reservation</a>
+    <a [routerLink]="['/add-reservation']" class="btn btn-success">Create New Reservation</a>
   </div>
 
   <table class="table table-bordered">
     <tr>
-      <th><span>Reservation Name/ID</span></th>
-      <th><span>Conference Room Name</span></th>
-      <th><span>Start Time</span></th>
-      <th><span>End Time</span></th>
-      <th><span></span></th>
+      <th>Reservation Name/ID</th>
+      <th>Conference Room Name</th>
+      <th>Start Time</th>
+      <th>End Time</th>
+      <th>Action</th>
     </tr>
     <tr *ngFor="let reservation of reservations">
       <td>
         <h5>{{reservation?.id}}</h5>
       </td>
       <td>
-        <h5>{{reservation?.conferenceRoom}}</h5>
+        <h5>{{reservation?.conferenceRoom?.name}}</h5>
       </td>
       <td>
         <h5>{{reservation?.startDateTime}}</h5>
@@ -28,26 +28,10 @@
       <td>
         <h5>{{reservation?.endDateTime}}</h5>
       </td>
-      <td style="width: 20%;">
-        <a href="#" class="table-link  text-warning">
-          <span class="fa-stack">
-            <i class="fa fa-square fa-stack-2x"></i>
-            <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
-          </span>
-        </a>
-        <button (click)="updateReservation(reservation.id)" class="table-link  text-info">
-          <!--                      (click) = "updateReservation(reservation.id)"-->
-          <span class="fa-stack">
-            <i class="fa fa-square fa-stack-2x"></i>
-            <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
-          </span>
-        </button>
-        <button (click)="deleteReservation(reservation.id)" class="table-link danger">
-          <span class="fa-stack">
-            <i class="fa fa-square fa-stack-2x"></i>
-            <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
-          </span>
-        </button>
+      <td>
+        <a href="#" [routerLink]="['/reservation/', reservation.id, 'view']" class="btn btn-info">View</a>
+        <a href="#" [routerLink]="['/reservation/', reservation.id, 'edit']" class="btn btn-primary">Edit</a>
+        <button type="button" (click)="deleteReservation(reservation.id)" class="btn btn-danger">Delete</button>
       </td>
     </tr>
   </table>

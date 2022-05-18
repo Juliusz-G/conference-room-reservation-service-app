@@ -1,0 +1,33 @@
+<div class="col-md-6 offset-md-3">
+
+  <h3> Create New Reservation </h3>
+  <form [formGroup]="form" (ngSubmit)="submit()">
+
+    <div class="form-group">
+      <label>Conference Room Name</label>
+      <select class="form-select" aria-label="Default select example" formControlName="conferenceRoomId">
+        <option *ngFor="let conferenceRoom of conferenceRooms" [value]="conferenceRoom.id">
+          {{ conferenceRoom.name.toUpperCase() }}</option>
+      </select>
+      <!-- <input placeholder="Name of conference room" formControlName="conferenceRoom" id="conferenceRoom" type="text"
+        class="form-control"> -->
+      <label>Date and time START of reservation</label>
+      <input placeholder="Date and time START of reservation" 
+      formControlName="startDateTime"  
+      id="startDateTime"  
+      type="text" 
+      class="form-control" 
+      name="startDateTime">
+      <label>Date and time END of reservation</label>
+      <input placeholder="Date and time END of reservation" 
+      formControlName="endDateTime"  
+      id="endDateTime"  
+      type="text" 
+      class="form-control"> 
+    </div>
+
+    <a routerLink="/reservation" class="btn btn-primary">Back</a>
+    <button class="btn btn-primary" type="submit" >Submit</button>
+    <!-- [disabled]="!form.valid" -->
+  </form>
+</div>

@@ -19,7 +19,7 @@ const routes: Routes = [
   {path: 'ogranisation-add', component: OrganisationAddComponent},
   {path: 'reservation', component: ReservationComponent},
   {path: 'add-reservation', component: AddReservationComponent},
-  {path: 'update-reservation/:id', component: UpdateReservationComponent},
+  {path: 'reservation/:reservationId/edit', component: UpdateReservationComponent},
 ];
 
 @NgModule({

@@ -10,10 +10,11 @@ import { ConferenceRoomComponent } from './components/conference-room/conference
 import { ReservationComponent } from './components/reservation/reservation.component';
 import { OrganisationAddComponent } from './components/organisation-add/organisation-add.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {AddReservationComponent} from "./components/add-reservation/add-reservation.component";
+import { AddReservationComponent } from "./components/add-reservation/add-reservation.component";
 import { ConferenceRoomCreateComponent } from './components/conference-room-create/conference-room-create.component';
 import { ConferenceRoomEditComponent } from './components/conference-room-edit/conference-room-edit.component';
 import { ConferenceRoomViewComponent } from './components/conference-room-view/conference-room-view.component';
+import { UpdateReservationComponent } from './components/update-reservation/update-reservation.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ConferenceRoomViewComponent } from './components/conference-room-view/c
     AddReservationComponent,
     ConferenceRoomCreateComponent,
     ConferenceRoomEditComponent,
-    ConferenceRoomViewComponent
+    ConferenceRoomViewComponent,
+    UpdateReservationComponent
   ],
   imports: [
     BrowserModule,

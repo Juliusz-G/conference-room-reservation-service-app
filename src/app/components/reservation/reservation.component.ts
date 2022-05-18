@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpErrorResponse } from '@angular/common/http';
-import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
-
-import { ReservationService } from 'src/app/services/reservation.service';
+import { ReservationService }from 'src/app/services/reservation.service';
 import { Reservation } from 'src/app/models/reservation';
 
 @Component({
@@ -12,72 +8,75 @@ import { Reservation } from 'src/app/models/reservation';
   styleUrls: ['./reservation.component.css']
 })
 export class ReservationComponent implements OnInit {
-  public reservations: Reservation[] | undefined;
-//   public reservation: Reservation | null;
-//   public reservation: Reservation;
 
-  constructor(private reservationService: ReservationService, private router: Router) { }
+  reservations: Reservation[] = [];
 
-  ngOnInit() {
-    this.getReservations();
-    console.log(this.reservations)
+  constructor(public reservationService: ReservationService) { }
+
+  ngOnInit(): void {
+    this.reservationService.getReservations().subscribe((data: Reservation[]) => {
+      this.reservations = data;
+      console.log(this.reservations);
+    })
   }
 
-  public getReservations(): void {
-    this.reservationService.getReservations().subscribe(
-        (response: Reservation[]) => {
-          this.reservations = response;
-        },
-        (error: HttpErrorResponse) => {
-          alert(error.message);
-        }
-    );
+  deleteReservation(reservationId: number) {
+    this.reservationService.deleteReservation(reservationId).subscribe(() => {
+      this.reservations = this.reservations.filter(item => item.id !== reservationId);
+      console.log('Conference room deleted successfully!');
+    })
   }
 
-  public deleteReservation(reservationId: number): void {
-      this.reservationService.deleteReservation(reservationId).subscribe(
-          (response: void) => {
-            this.getReservations();
-          },
-          (error: HttpErrorResponse) => {
-            alert(error.message);
-          }
-      );
-  }
+  // public getReservations(): void {
+  //   this.reservationService.getReservations().subscribe(
+  //       (response: Reservation[]) => {
+  //         this.reservations = response;
+  //       },
+  //       (error: HttpErrorResponse) => {
+  //         alert(error.message);
+  //       }
+  //   );
+  // }
 
-  public addReservation(addForm: NgForm): void {
-      document.getElementById('add-reservation-form')?.click();
-      this.reservationService.addReservation(addForm.value).subscribe(
-           (response: Reservation) => {
-             console.log(response);
-             this.getReservations();
-             addForm.reset();
-           },
-           (error: HttpErrorResponse) => {
-             alert(error.message);
-             addForm.reset();
-           }
-      );
-  }
+  // public deleteReservation(reservationId: number): void {
+  //     this.reservationService.deleteReservation(reservationId).subscribe(
+  //         (response: void) => {
+  //           this.getReservations();
+  //         },
+  //         (error: HttpErrorResponse) => {
+  //           alert(error.message);
+  //         }
+  //     );
+  // }
 
-  onSubmit(){
-  }
+  // public addReservation(addForm: NgForm): void {
+  //     document.getElementById('add-reservation-form')?.click();
+  //     this.reservationService.addReservation(addForm.value).subscribe(
+  //          (response: Reservation) => {
+  //            console.log(response);
+  //            this.getReservations();
+  //            addForm.reset();
+  //          },
+  //          (error: HttpErrorResponse) => {
+  //            alert(error.message);
+  //            addForm.reset();
+  //          }
+  //     );
+  // }
 
-  updateReservation(id: number){
-      this.router.navigate(['update-reservation', id]);
-    }
+  // updateReservation(id: number){
+  //     this.router.navigate(['update-reservation', id]);
+  //   }
 
-//   public updateReservation(reservation: Reservation): void {
-//     this.reservationService.updateReservation(reservation).subscribe(
-//       (response: Reservation) => {
-//         console.log(response);
-//         this.getReservations();
-//       },
-//       (error: HttpErrorResponse) => {
-//         alert(error.message);
-//       }
-//     );
-//   }
-
-
+  //   public updateReservation(reservation: Reservation): void {
+  //     this.reservationService.updateReservation(reservation).subscribe(
+  //       (response: Reservation) => {
+  //         console.log(response);
+  //         this.getReservations();
+  //       },
+  //       (error: HttpErrorResponse) => {
+  //         alert(error.message);
+  //       }
+  //     );
+  //   }
 }

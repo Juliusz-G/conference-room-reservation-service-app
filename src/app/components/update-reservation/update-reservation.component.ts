@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { ReservationService } from 'src/app/services/reservation.service';
 import { Reservation } from 'src/app/models/reservation';
-import { ReservationComponent } from 'src/app/components/reservation/reservation.component';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-update-reservation',
@@ -12,27 +12,37 @@ import { ReservationComponent } from 'src/app/components/reservation/reservation
 })
 export class UpdateReservationComponent implements OnInit {
 
-  id!: number;
-  reservation: Reservation = new Reservation();
-  constructor(private reservationService: ReservationService, private router: Router,
+  reservationId: number;
+  form: FormGroup;
+
+  constructor(public reservationService: ReservationService, 
+    private router: Router,
     private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.id = this.route.snapshot.params['id'];
+    this.reservationId = this.route.snapshot.params['reservationId'];
+    console.log(this.reservationId);
+    this.reservationService.getReservationById(this.reservationId).subscribe((data: Reservation) => {
+      this.form.patchValue(data);
+  
+    });
 
-    this.reservationService.getReservationById(this.id).subscribe(data => {
-      this.reservation = data;
-    }, error => console.log(error));
+    this.form = new FormGroup({
+      conferenceRoom: new FormControl(''),
+      startDateTime: new FormControl('', [Validators.required]),
+      endDateTime: new FormControl('', [Validators.required])
+    });
   }
 
-  onSubmit() {
-    this.reservationService.updateReservation(this.reservation).subscribe(data => {
-      this.goToReservationList();
-    }, error => console.log(error));
+  get f() {
+    return this.form.controls;
   }
 
-  goToReservationList(){
-    this.router.navigate([''])
+  submit() {
+    console.log(this.form.value);
+    this.reservationService.updateReservation(this.reservationId, this.form.value).subscribe(() => {
+      console.log('Reservation updated successfully!');
+      this.router.navigateByUrl('/reservation').then(() => confirm("Reservation updated successfully!"));
+    })
   }
-
 }
