@@ -9,6 +9,7 @@ import { OrganisationAddComponent } from './components/organisation-add/organisa
 import { ConferenceRoomCreateComponent } from './components/conference-room-create/conference-room-create.component';
 import { ConferenceRoomEditComponent } from './components/conference-room-edit/conference-room-edit.component';
 import { ConferenceRoomViewComponent } from './components/conference-room-view/conference-room-view.component';
+import { OrganisationEditComponent } from './components/organisation-edit/organisation-edit.component';
 
 const routes: Routes = [
   {path: 'conference-room', component: ConferenceRoomComponent},
@@ -16,9 +17,10 @@ const routes: Routes = [
   {path: 'conference-room/create', component: ConferenceRoomCreateComponent},
   {path: 'conference-room/:conferenceRoomId/view', component: ConferenceRoomViewComponent},
   {path: 'ogranisation', component: OrganisationComponent},
-  {path: 'ogranisation-add', component: OrganisationAddComponent},
+  {path: 'ogranisation/create', component: OrganisationAddComponent},
+  {path: 'ogranisation/:organisationId/edit', component: OrganisationEditComponent},
   {path: 'reservation', component: ReservationComponent},
-  {path: 'add-reservation', component: AddReservationComponent},
+  {path: 'reservation/create', component: AddReservationComponent},
   {path: 'reservation/:reservationId/edit', component: UpdateReservationComponent},
 ];
 

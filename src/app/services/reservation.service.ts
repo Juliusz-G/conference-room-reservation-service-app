@@ -9,28 +9,28 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class ReservationService {
-  private apiServerUrl = environment.apiUrl;
+  private apiUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
 
   public getReservations(): Observable<Reservation[]> {
-       return this.http.get<Reservation[]>(`${this.apiServerUrl}/reservation/all`);
+       return this.http.get<Reservation[]>(`${this.apiUrl}/reservation`);
   }
 
   public addReservation(reservation: Reservation): Observable<Reservation> {
        console.log('reservation', reservation)
-       return this.http.post<Reservation>(`${this.apiServerUrl}/reservation/create`, reservation);
+       return this.http.post<Reservation>(`${this.apiUrl}/reservation`, reservation);
   }
 
   public updateReservation(reservationId: number, reservation: Reservation): Observable<Reservation> {
-       return this.http.put<Reservation>(`${this.apiServerUrl}/reservation/update/${reservationId}`, reservation);
+       return this.http.put<Reservation>(`${this.apiUrl}/reservation/${reservationId}`, reservation);
   }
 
   public deleteReservation(reservationId: number): Observable<void> {
-        return this.http.delete<void>(`${this.apiServerUrl}/reservation/remove/${reservationId}`);
+        return this.http.delete<void>(`${this.apiUrl}/reservation/${reservationId}`);
   }
 
   public getReservationById(id: number): Observable<Reservation> {
-        return this.http.get<Reservation>(`${this.apiServerUrl}/reservation/get/${id}`);
+        return this.http.get<Reservation>(`${this.apiUrl}/reservation/${id}`);
   }
 }

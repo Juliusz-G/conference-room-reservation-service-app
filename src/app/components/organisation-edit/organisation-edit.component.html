@@ -1,26 +1,29 @@
-<div class="col-md-6 offset-md-3">
+<div class="container">
 
-  <h1> Create New Organisation </h1>
+  <div class="d-flex justify-content-start">
+    <h1>Update Organisation</h1>
+  </div>
+  <div class="d-flex justify-content-end">
+    <a routerLink="/organisation" class="btn btn-primary">Back</a>
+  </div>
+
   <form [formGroup]="form" (ngSubmit)="submit()">
-
+  
     <div class="form-group">
       <label>Organisation name</label>
-      <input placeholder="Organisation name"
+      <input
       formControlName="organisationName"
       type="text" 
       id = "organisationName"
-      class ="form-control"
-      name = "organisationName">
+      class ="form-control">
       <label>Organisation description</label>
-      <input placeholder="Organisation description"
+      <input
       formControlName="organisationDescription"
       type="text" 
       id = "organisationDescription"
-      class ="form-control" 
-      name = "organisationDescription">
+      class ="form-control">
     </div>
-
-    <a routerLink="/ogranisation" class="btn btn-primary">Back</a>
+  
     <button class="btn btn-primary" type="submit" >Submit</button>
     <!-- [disabled]="!form.valid" -->
   </form>
