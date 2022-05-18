@@ -11,26 +11,22 @@ import {ConferenceRoom} from "../../models/conference-room";
 })
 export class OrganisationComponent implements OnInit {
 
-  public organisations: Organisation[] = [];
+  organisations: Organisation[] = [];
 
-  constructor(private organisationService: OrganisationService) {
-  }
+  constructor(public organisationService: OrganisationService) { }
 
   ngOnInit(): void {
-//     this.getAllOrganisations();
+    this.organisationService.getAllOrganisations().subscribe((data: Organisation[]) => {
+      this.organisations = data;
+      console.log(this.organisations);
+    })
   }
 
 
-  public getAllOrganisations(): void {
-    this.organisationService.getAllOrganisations().subscribe(
-      (response: Organisation[]) => {
-        this.organisations = response;
-        console.log(this.organisations)
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-      }
-    )
+  deleteOrganisation(organisationId: number) {
+    this.organisationService.deleteOrganisation(organisationId).subscribe(() => {
+      this.organisations = this.organisations.filter(item => item.id !== organisationId);
+      console.log('Organisation deleted successfully!');
+    })
   }
-
 }

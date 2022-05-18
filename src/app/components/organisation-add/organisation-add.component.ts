@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {OrganisationService} from "../../services/organisation.service";
 import {Organisation} from "../../models/organisation";
-import {NgForm} from "@angular/forms";
+import {FormControl, FormGroup, NgForm, Validators} from "@angular/forms";
 import {HttpErrorResponse} from "@angular/common/http";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-organisation-add',
@@ -11,67 +12,28 @@ import {HttpErrorResponse} from "@angular/common/http";
 })
 export class OrganisationAddComponent implements OnInit {
 
-  constructor(private organisationService: OrganisationService) { }
+  organisationId: number;
+  form: FormGroup;
 
-  organisation: Organisation = new Organisation();
-  organisations: Organisation[] = [];
-
+  constructor(public organisationService: OrganisationService,
+    private router: Router) { }
 
   ngOnInit(): void {
-    this.getOrganisations();
-    console.log(this.organisations)
+    this.form = new FormGroup({
+      organisationName: new FormControl('', [Validators.required]),
+      organisationDescription: new FormControl('', [Validators.required])
+    });
+   
   }
 
-  public addOrganisation(addForm: NgForm): void {
-    document.getElementById('add-organisation-form')?.click();
-    this.organisationService.addOrganisation(addForm.value).subscribe(
-      (response: Organisation) => {
-        console.log(response);
-        this.getOrganisations();
-        addForm.reset();
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-        addForm.reset();
-      }
-    );
+  get f() {
+    return this.form.controls;
   }
 
-  public getOrganisations(): void {
-    this.organisationService.getAllOrganisations().subscribe(
-      (response: Organisation[]) => {
-        this.organisations = response;
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-      }
-    );
+  submit(){
+    this.organisationService.addOrganisation(this.form.value).subscribe(() => {
+      console.log('Organisation created successfully!');
+      this.router.navigateByUrl('/organisation').then(() => alert("Organisation created successfully!"))
+    })
   }
-
-  public updateOrganisation(organisation: Organisation): void {
-    this.organisationService.updateOrganisation(organisation).subscribe(
-      (response: Organisation) => {
-        console.log(response);
-        this.getOrganisations();
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-      }
-    );
-  }
-
-  public deleteOrganisation(orgnisation: Organisation): void {
-    this.organisationService.deleteOrganisation(orgnisation).subscribe(
-      (response: void) => {
-        this.getOrganisations();
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-      }
-    );
-  }
-
-  onSubmit(){
-  }
-
 }

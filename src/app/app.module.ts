@@ -15,6 +15,7 @@ import { ConferenceRoomCreateComponent } from './components/conference-room-crea
 import { ConferenceRoomEditComponent } from './components/conference-room-edit/conference-room-edit.component';
 import { ConferenceRoomViewComponent } from './components/conference-room-view/conference-room-view.component';
 import { UpdateReservationComponent } from './components/update-reservation/update-reservation.component';
+import { OrganisationEditComponent } from './components/organisation-edit/organisation-edit.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { UpdateReservationComponent } from './components/update-reservation/upda
     ConferenceRoomCreateComponent,
     ConferenceRoomEditComponent,
     ConferenceRoomViewComponent,
-    UpdateReservationComponent
+    UpdateReservationComponent,
+    OrganisationEditComponent
   ],
   imports: [
     BrowserModule,

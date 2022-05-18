@@ -19,23 +19,23 @@ export class ConferenceRoomService {
   }
 
   public getConferenceRooms(): Observable<ConferenceRoom[]> {
-    return this.http.get<ConferenceRoom[]>(`${this.apiUrl}/conference-room/get/all`).pipe(catchError(this.errorHandler));
+    return this.http.get<ConferenceRoom[]>(`${this.apiUrl}/conference-room/all`).pipe(catchError(this.errorHandler));
   }
 
   public getConferenceRoomsForOrganisation(organisationId: number): Observable<ConferenceRoom[]> {
-    return this.http.get<ConferenceRoom[]>(`${this.apiUrl}/conference-room/get/all-for-organisation/${organisationId}`).pipe(catchError(this.errorHandler));
+    return this.http.get<ConferenceRoom[]>(`${this.apiUrl}/conference-room/all-for-organisation/${organisationId}`).pipe(catchError(this.errorHandler));
   }
 
   public createConferenceRoom(conferenceRoom: ConferenceRoom): Observable<ConferenceRoom> {
-    return this.http.post<ConferenceRoom>(`${this.apiUrl}/conference-room/create`, conferenceRoom).pipe(catchError(this.errorHandler));
+    return this.http.post<ConferenceRoom>(`${this.apiUrl}/conference-room`, conferenceRoom).pipe(catchError(this.errorHandler));
   }
 
   public updateConferenceRoom(conferenceRoomId: number, conferenceRoom: ConferenceRoom): Observable<ConferenceRoom> {
-    return this.http.put<ConferenceRoom>(`${this.apiUrl}/conference-room/update/${conferenceRoomId}`, conferenceRoom).pipe(catchError(this.errorHandler));
+    return this.http.put<ConferenceRoom>(`${this.apiUrl}/conference-room/${conferenceRoomId}`, conferenceRoom).pipe(catchError(this.errorHandler));
   }
 
   public deleteConferenceRoom(conferenceRoomId: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/conference-room/delete/${conferenceRoomId}`).pipe(catchError(this.errorHandler));
+    return this.http.delete<void>(`${this.apiUrl}/conference-room/${conferenceRoomId}`).pipe(catchError(this.errorHandler));
   }
 
   errorHandler(error:any) {
