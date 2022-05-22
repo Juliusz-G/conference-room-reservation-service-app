@@ -1,15 +1,19 @@
-<div class="container">
-  <h1>Create New Conference Room</h1>
+<div  class="col-md-6 offset-md-3">
 
-  <!-- <a routerLink="/conference-room" class="btn btn-primary">Back</a> -->
+  <h1>Create New Conference Room</h1>
   <form [formGroup]="form" (ngSubmit)="submit()">
 
     <div class="form-group">
-      <label for="name">Name:</label>
+      <label>Organisation</label>
+      <select class="form-select" aria-label="Default select example" formControlName="organisationId">
+        <option *ngFor="let organisation of organisations" [value]="organisation.id">
+          {{ organisation.name.toUpperCase() }}</option>
+      </select>
+      <label for="conferenceRoomName">Name:</label>
       <input
         placeholder="Name of conference room"
-        formControlName="name"
-        id="name"
+        formControlName="conferenceRoomName"
+        id="conferenceRoomName"
         type="text"
         class="form-control">
       <label for="identifier">Identifier:</label>
@@ -70,7 +74,7 @@
 <!--      </div>-->
 <!--    </div>-->
 
-    <a routerLink="/conference-room" class="btn btn-primary">Back</a>
-    <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Submit</button>
+    <a routerLink="/conference-rooms" class="btn btn-primary my-2">Back</a>
+    <button class="btn btn-primary mx-2 my-2" type="submit" [disabled]="!form.valid">Submit</button>
   </form>
 </div>

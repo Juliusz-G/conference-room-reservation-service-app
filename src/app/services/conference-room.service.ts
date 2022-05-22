@@ -15,11 +15,11 @@ export class ConferenceRoomService {
   }
 
   public getConferenceRoom(conferenceRoomId: number): Observable<ConferenceRoom> {
-    return this.http.get<ConferenceRoom>(`${this.apiUrl}/conference-room/get/${conferenceRoomId}`).pipe(catchError(this.errorHandler));
+    return this.http.get<ConferenceRoom>(`${this.apiUrl}/conference-room/${conferenceRoomId}`).pipe(catchError(this.errorHandler));
   }
 
   public getConferenceRooms(): Observable<ConferenceRoom[]> {
-    return this.http.get<ConferenceRoom[]>(`${this.apiUrl}/conference-room`).pipe(catchError(this.errorHandler));
+    return this.http.get<ConferenceRoom[]>(`${this.apiUrl}/conference-rooms`).pipe(catchError(this.errorHandler));
   }
 
   public getConferenceRoomsForOrganisation(organisationId: number): Observable<ConferenceRoom[]> {

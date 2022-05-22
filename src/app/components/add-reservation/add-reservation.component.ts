@@ -5,6 +5,8 @@ import { ReservationService } from 'src/app/services/reservation.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ConferenceRoomService } from 'src/app/services/conference-room.service';
 import { ConferenceRoom } from 'src/app/models/conference-room';
+import { Organisation } from 'src/app/models/organisation';
+import { OrganisationService } from 'src/app/services/organisation.service';
 
 
 @Component({
@@ -16,16 +18,22 @@ export class AddReservationComponent implements OnInit {
 
   form!: FormGroup;
   conferenceRooms: ConferenceRoom[];
+  organisations: Organisation[];
 
   constructor(public reservationService: ReservationService,
       private router: Router,
-      private conferenceRoomService: ConferenceRoomService ) { }
+      private conferenceRoomService: ConferenceRoomService,
+      private organisationService: OrganisationService ) { }
 
   ngOnInit(): void {
+    this.organisationService.getAllOrganisations().subscribe((data: Organisation[])=>{
+      this.organisations = data;
+      console.log(this.organisations);
+    });
     this.conferenceRoomService.getConferenceRooms().subscribe((data: ConferenceRoom[])=>{
       this.conferenceRooms = data;
       console.log(this.conferenceRooms);
-    }); 
+    });
 
     this.form = new FormGroup({
       conferenceRoomId: new FormControl(''),
@@ -33,7 +41,7 @@ export class AddReservationComponent implements OnInit {
       endDateTime: new FormControl('', [Validators.required])
 
       // Validators.pattern("\\d[.]\\d\\d")
-  }); 
+  });
 }
 
   get f() {
@@ -45,7 +53,7 @@ export class AddReservationComponent implements OnInit {
     console.log(this.form.value);
     this.reservationService.addReservation({...this.form.value, conferenceRoom: selectedRoom}).subscribe(() => {
       console.log('Reservation created successfully!');
-      this.router.navigateByUrl('/reservation').then(() => alert("Reservation created successfully!"))
+      this.router.navigateByUrl('/reservations').then(() => alert("Reservation created successfully!"))
     })
   }
 

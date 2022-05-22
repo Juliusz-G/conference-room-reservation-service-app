@@ -23,7 +23,7 @@ export class OrganisationAddComponent implements OnInit {
       name: new FormControl('', [Validators.required]),
       description: new FormControl('', [Validators.required])
     });
-   
+
   }
 
   get f() {
@@ -33,7 +33,7 @@ export class OrganisationAddComponent implements OnInit {
   submit(){
     this.organisationService.addOrganisation(this.form.value).subscribe(() => {
       console.log('Organisation created successfully!');
-      this.router.navigateByUrl('/ogranisation').then(() => alert("Organisation created successfully!"))
+      this.router.navigateByUrl('/organisations').then(() => alert("Organisation created successfully!"))
     })
   }
 }

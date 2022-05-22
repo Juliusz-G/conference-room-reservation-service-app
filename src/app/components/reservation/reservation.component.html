@@ -4,12 +4,18 @@
     <h1>RESERVATIONS</h1>
   </div>
   <div class="d-flex justify-content-end">
-    <a routerLink="/reservation/create" class="btn btn-success">Create New Reservation</a>
+      <form class="form-inline my-2 my-lg-0">
+        <input type="search" (ngModelChange)="searchReservations(key.value)"  #key="ngModel" ngModel
+         name="key" id="searchName" class="form-control mr-sm-2" placeholder="Search..." required>
+      </form>
+  </div>
+  <div class="d-flex justify-content-end">
+    <a routerLink="/reservation/create" class="btn btn-success my-2">Create New Reservation</a>
   </div>
 
   <table class="table table-bordered">
     <tr>
-      <th>Reservation Name/ID</th>
+      <th>Reservation ID</th>
       <th>Conference Room Name</th>
       <th>Start Time</th>
       <th>End Time</th>
@@ -30,9 +36,16 @@
       </td>
       <td>
         <a href="#" [routerLink]="['/reservation/', reservation.id, 'view']" class="btn btn-info">View</a>
-        <a href="#" [routerLink]="['/reservation/', reservation.id, 'edit']" class="btn btn-primary">Edit</a>
+        <a href="#" [routerLink]="['/reservation/', reservation.id, 'edit']" class="btn btn-primary mx-2">Edit</a>
         <button type="button" (click)="deleteReservation(reservation.id)" class="btn btn-danger">Delete</button>
       </td>
     </tr>
   </table>
+  <div *ngIf="reservations.length == 0" class="col-lg-12 col-md-12 col-xl-12">
+    <div class="alert alert-secondary" role="alert">
+      <p></p>
+      <h4 class="alert-heading">List Reservations is empty.</h4>
+      <p></p>
+    </div>
+    </div>
 </div>

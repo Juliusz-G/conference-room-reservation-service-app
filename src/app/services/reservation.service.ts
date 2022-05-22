@@ -14,7 +14,7 @@ export class ReservationService {
   constructor(private http: HttpClient) { }
 
   public getReservations(): Observable<Reservation[]> {
-       return this.http.get<Reservation[]>(`${this.apiUrl}/reservation`);
+       return this.http.get<Reservation[]>(`${this.apiUrl}/reservations`);
   }
 
   public addReservation(reservation: Reservation): Observable<Reservation> {

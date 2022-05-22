@@ -11,9 +11,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class ConferenceRoomEditComponent implements OnInit {
 
-  conferenceRoomId!: number;
-  conferenceRoom!: ConferenceRoom;
-  form!: FormGroup;
+  conferenceRoomId: number;
+  form: FormGroup;
 
   constructor(
     public conferenceRoomService: ConferenceRoomService,
@@ -25,7 +24,7 @@ export class ConferenceRoomEditComponent implements OnInit {
   ngOnInit(): void {
     this.conferenceRoomId = this.route.snapshot.params['conferenceRoomId'];
     this.conferenceRoomService.getConferenceRoom(this.conferenceRoomId).subscribe((data: ConferenceRoom) => {
-      this.conferenceRoom = data;
+      this.form.patchValue(data);
     });
 
     this.form = new FormGroup({
@@ -47,7 +46,7 @@ export class ConferenceRoomEditComponent implements OnInit {
     console.log(this.form.value);
     this.conferenceRoomService.updateConferenceRoom(this.conferenceRoomId, this.form.value).subscribe(() => {
       console.log('Conference Room updated successfully!');
-      this.router.navigateByUrl('/conference-room').then(() => confirm("Conference room updated successfully!"));
+      this.router.navigateByUrl('/conference-rooms').then(() => confirm("Conference room updated successfully!"));
     })
   }
 

@@ -4,27 +4,27 @@
     <h1>Update Organisation</h1>
   </div>
   <div class="d-flex justify-content-end">
-    <a routerLink="/organisation" class="btn btn-primary">Back</a>
+    <a routerLink="/organisations" class="btn btn-primary">Back</a>
   </div>
 
   <form [formGroup]="form" (ngSubmit)="submit()">
-  
+
     <div class="form-group">
       <label>Organisation name</label>
       <input
       formControlName="name"
-      type="text" 
+      type="text"
       id = "name"
       class ="form-control">
       <label>Organisation description</label>
       <input
       formControlName="description"
-      type="text" 
+      type="text"
       id = "description"
       class ="form-control">
     </div>
-  
-    <button class="btn btn-primary" type="submit" >Submit</button>
+
+    <button class="btn btn-primary my-2" type="submit" >Submit</button>
     <!-- [disabled]="!form.valid" -->
   </form>
 </div>

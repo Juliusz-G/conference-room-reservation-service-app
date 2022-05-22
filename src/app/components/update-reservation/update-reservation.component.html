@@ -4,32 +4,32 @@
     <h1>Update Reservation</h1>
   </div>
   <div class="d-flex justify-content-end">
-    <a routerLink="/conference-room" class="btn btn-primary">Back</a>
+    <a routerLink="/reservations" class="btn btn-primary">Back</a>
   </div>
 
   <form [formGroup]="form" (ngSubmit)="submit()">
       <div class="form-group">
       <label for="conferenceRoom">Conference Room Name</label>
-      <input 
-      formControlName="conferenceRoom" 
-      id="conferenceRoom" 
+      <input
+      formControlName="conferenceRoom"
+      id="conferenceRoom"
       type="text"
       class="form-control">
       <label for="startDateTime">Date and time START of reservation</label>
-      <input 
-      formControlName="startDateTime"  
-      id="startDateTime"  
-      type="text" 
-      class="form-control" 
+      <input
+      formControlName="startDateTime"
+      id="startDateTime"
+      type="text"
+      class="form-control"
       name="startDateTime">
       <label for="endDateTime">Date and time END of reservation</label>
-      <input 
-      formControlName="endDateTime"  
-      id="endDateTime"  
-      type="text" 
-      class="form-control"> 
+      <input
+      formControlName="endDateTime"
+      id="endDateTime"
+      type="text"
+      class="form-control">
     </div>
 
-    <button class="btn btn-success" type ="submit">Submit</button>
+    <button class="btn btn-success my-2" type ="submit">Submit</button>
   </form>
 </div>

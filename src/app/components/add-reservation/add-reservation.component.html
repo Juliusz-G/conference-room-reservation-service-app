@@ -4,6 +4,11 @@
   <form [formGroup]="form" (ngSubmit)="submit()">
 
     <div class="form-group">
+      <label>Organisation</label>
+      <select class="form-select" aria-label="Default select example" formControlName="organisationId">
+        <option *ngFor="let organisation of organisations" [value]="organisation.id">
+          {{ organisation.name.toUpperCase() }}</option>
+      </select>
       <label>Conference Room Name</label>
       <select class="form-select" aria-label="Default select example" formControlName="conferenceRoomId">
         <option *ngFor="let conferenceRoom of conferenceRooms" [value]="conferenceRoom.id">
@@ -12,22 +17,22 @@
       <!-- <input placeholder="Name of conference room" formControlName="conferenceRoom" id="conferenceRoom" type="text"
         class="form-control"> -->
       <label>Date and time START of reservation</label>
-      <input placeholder="Date and time START of reservation" 
-      formControlName="startDateTime"  
-      id="startDateTime"  
-      type="text" 
-      class="form-control" 
+      <input placeholder="Date and time START of reservation"
+      formControlName="startDateTime"
+      id="startDateTime"
+      type="datetime-local"
+      class="form-control"
       name="startDateTime">
       <label>Date and time END of reservation</label>
-      <input placeholder="Date and time END of reservation" 
-      formControlName="endDateTime"  
-      id="endDateTime"  
-      type="text" 
-      class="form-control"> 
+      <input placeholder="Date and time END of reservation"
+      formControlName="endDateTime"
+      id="endDateTime"
+      type="datetime-local"
+      class="form-control">
     </div>
 
-    <a routerLink="/reservation" class="btn btn-primary">Back</a>
-    <button class="btn btn-primary" type="submit" >Submit</button>
+    <a routerLink="/reservations" class="btn btn-primary my-2">Back</a>
+    <button class="btn btn-primary mx-2 my-2" type="submit" >Submit</button>
     <!-- [disabled]="!form.valid" -->
   </form>
 </div>

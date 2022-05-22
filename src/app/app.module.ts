@@ -16,6 +16,9 @@ import { ConferenceRoomEditComponent } from './components/conference-room-edit/c
 import { ConferenceRoomViewComponent } from './components/conference-room-view/conference-room-view.component';
 import { UpdateReservationComponent } from './components/update-reservation/update-reservation.component';
 import { OrganisationEditComponent } from './components/organisation-edit/organisation-edit.component';
+import { OrganisationViewComponent } from './components/organisation-view/organisation-view.component';
+import { ReservationViewComponent } from './components/reservation-view/reservation-view.component';
+import { HomePageComponent } from './components/home-page/home-page.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,10 @@ import { OrganisationEditComponent } from './components/organisation-edit/organi
     ConferenceRoomEditComponent,
     ConferenceRoomViewComponent,
     UpdateReservationComponent,
-    OrganisationEditComponent
+    OrganisationEditComponent,
+    OrganisationViewComponent,
+    ReservationViewComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,
