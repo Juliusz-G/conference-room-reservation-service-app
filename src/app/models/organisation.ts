@@ -5,4 +5,9 @@ export class Organisation {
   name!: string;
   description!: string;
   conferenceRooms: ConferenceRoom[] = [];
+
+  public getName(): String {
+    return this.name;
+  }
+
 }

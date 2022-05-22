@@ -1,1 +1,6 @@
 /*styling for organisation component*/
+   .table .btn-primary{background-color: #0d6efd;} 
+   .table .btn-info{background-color: #0dcaf0;}
+   .table .btn-info{color: white;}
+   .table .btn-danger{background-color: #dc3545;} 
+    

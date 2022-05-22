@@ -10,8 +10,7 @@ export class ConferenceRoom {
   private _numberOfStandingPlaces: number;
   private _numberOfSittingPlaces: number;
   private _reservationList: Reservation[];
-  private _organisation: Organisation;
-
+  public _organisation: Organisation;
 
   constructor(id: number, name: string, identifier: string, level: number, availability: boolean, numberOfStandingPlaces: number, numberOfSittingPlaces: number, reservationList: Reservation[], organisation: Organisation) {
     this._id = id;

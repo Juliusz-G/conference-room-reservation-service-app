@@ -16,17 +16,45 @@ export class OrganisationComponent implements OnInit {
   constructor(public organisationService: OrganisationService) { }
 
   ngOnInit(): void {
-    this.organisationService.getAllOrganisations().subscribe((data: Organisation[]) => {
-      this.organisations = data;
-      console.log(this.organisations);
-    })
+    this.getOrganisations();
+    // this.organisationService.getAllOrganisations().subscribe((data: Organisation[]) => {
+    //   this.organisations = data;
+    //   console.log(this.organisations);
+    // })
   }
 
 
   deleteOrganisation(organisationId: number) {
-    this.organisationService.deleteOrganisation(organisationId).subscribe(() => {
-      this.organisations = this.organisations.filter(item => item.id !== organisationId);
-      console.log('Organisation deleted successfully!');
-    })
+    if (confirm('Do you want to delete this organisation?')) {
+      this.organisationService.deleteOrganisation(organisationId).subscribe(() => {
+        this.organisations = this.organisations.filter(item => item.id !== organisationId);
+        console.log('Organisation deleted successfully!');
+      })
+    } 
+  }
+
+  public searchOrganisations(key: string): void {
+    console.log(key);
+    const results: Organisation[] = [];
+    for (const organisation of this.organisations) {
+      if (organisation.name.toLowerCase().indexOf(key.toLowerCase()) !== -1) {
+        results.push(organisation);
+      }
+    }
+    this.organisations = results;
+    if (results.length === 0 || !key) {
+      this.getOrganisations();
+    }
+  }
+
+  public getOrganisations(): void {
+    this.organisationService.getAllOrganisations().subscribe((data: Organisation[]) => {
+      this.organisations = data;
+      console.log(this.organisations);
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
   }
 }

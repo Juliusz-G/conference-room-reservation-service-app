@@ -33,7 +33,7 @@ export class OrganisationAddComponent implements OnInit {
   submit(){
     this.organisationService.addOrganisation(this.form.value).subscribe(() => {
       console.log('Organisation created successfully!');
-      this.router.navigateByUrl('/ogranisation').then(() => alert("Organisation created successfully!"))
+      this.router.navigateByUrl('/organisation').then(() => alert("Organisation created successfully!"))
     })
   }
 }
