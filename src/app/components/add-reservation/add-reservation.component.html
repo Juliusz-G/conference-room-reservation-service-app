@@ -17,21 +17,21 @@
       <!-- <input placeholder="Name of conference room" formControlName="conferenceRoom" id="conferenceRoom" type="text"
         class="form-control"> -->
       <label>Date and time START of reservation</label>
-      <input placeholder="Date and time START of reservation" 
-      formControlName="startDateTime"  
-      id="startDateTime"  
-      type="datetime-local" 
-      class="form-control" 
+      <input placeholder="Date and time START of reservation"
+      formControlName="startDateTime"
+      id="startDateTime"
+      type="datetime-local"
+      class="form-control"
       name="startDateTime">
       <label>Date and time END of reservation</label>
-      <input placeholder="Date and time END of reservation" 
-      formControlName="endDateTime"  
-      id="endDateTime"  
-      type="datetime-local" 
-      class="form-control"> 
+      <input placeholder="Date and time END of reservation"
+      formControlName="endDateTime"
+      id="endDateTime"
+      type="datetime-local"
+      class="form-control">
     </div>
 
-    <a routerLink="/reservation" class="btn btn-primary my-2">Back</a>
+    <a routerLink="/reservations" class="btn btn-primary my-2">Back</a>
     <button class="btn btn-primary mx-2 my-2" type="submit" >Submit</button>
     <!-- [disabled]="!form.valid" -->
   </form>

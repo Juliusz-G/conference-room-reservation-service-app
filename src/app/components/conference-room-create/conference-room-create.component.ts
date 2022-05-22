@@ -28,7 +28,7 @@ export class ConferenceRoomCreateComponent implements OnInit {
     this.organisationService.getAllOrganisations().subscribe((data: Organisation[])=>{
       this.organisations = data;
       console.log(this.organisations);
-    }); 
+    });
 
     this.form = new FormGroup({
       organisationId: new FormControl(null, [Validators.required]),
@@ -52,7 +52,7 @@ export class ConferenceRoomCreateComponent implements OnInit {
     console.log(this.form.value);
     this.conferenceRoomService.createConferenceRoom(this.form.value).subscribe(() => {
       console.log('Conference room created successfully!');
-      this.router.navigateByUrl('/conference-room').then(() => alert("Conference room created successfully!"));
+      this.router.navigateByUrl('/conference-rooms').then(() => alert("Conference room created successfully!"));
     })
   }
 

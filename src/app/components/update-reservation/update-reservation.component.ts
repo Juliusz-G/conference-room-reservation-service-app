@@ -15,7 +15,7 @@ export class UpdateReservationComponent implements OnInit {
   reservationId: number;
   form: FormGroup;
 
-  constructor(public reservationService: ReservationService, 
+  constructor(public reservationService: ReservationService,
     private router: Router,
     private route: ActivatedRoute) { }
 
@@ -24,7 +24,7 @@ export class UpdateReservationComponent implements OnInit {
     console.log(this.reservationId);
     this.reservationService.getReservationById(this.reservationId).subscribe((data: Reservation) => {
       this.form.patchValue(data);
-  
+
     });
 
     this.form = new FormGroup({
@@ -42,7 +42,7 @@ export class UpdateReservationComponent implements OnInit {
     console.log(this.form.value);
     this.reservationService.updateReservation(this.reservationId, this.form.value).subscribe(() => {
       console.log('Reservation updated successfully!');
-      this.router.navigateByUrl('/reservation').then(() => confirm("Reservation updated successfully!"));
+      this.router.navigateByUrl('/reservations').then(() => confirm("Reservation updated successfully!"));
     })
   }
 }

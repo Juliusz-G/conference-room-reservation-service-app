@@ -22,18 +22,18 @@ export class AddReservationComponent implements OnInit {
 
   constructor(public reservationService: ReservationService,
       private router: Router,
-      private conferenceRoomService: ConferenceRoomService, 
+      private conferenceRoomService: ConferenceRoomService,
       private organisationService: OrganisationService ) { }
 
   ngOnInit(): void {
     this.organisationService.getAllOrganisations().subscribe((data: Organisation[])=>{
       this.organisations = data;
       console.log(this.organisations);
-    }); 
+    });
     this.conferenceRoomService.getConferenceRooms().subscribe((data: ConferenceRoom[])=>{
       this.conferenceRooms = data;
       console.log(this.conferenceRooms);
-    }); 
+    });
 
     this.form = new FormGroup({
       conferenceRoomId: new FormControl(''),
@@ -41,7 +41,7 @@ export class AddReservationComponent implements OnInit {
       endDateTime: new FormControl('', [Validators.required])
 
       // Validators.pattern("\\d[.]\\d\\d")
-  }); 
+  });
 }
 
   get f() {
@@ -53,7 +53,7 @@ export class AddReservationComponent implements OnInit {
     console.log(this.form.value);
     this.reservationService.addReservation({...this.form.value, conferenceRoom: selectedRoom}).subscribe(() => {
       console.log('Reservation created successfully!');
-      this.router.navigateByUrl('/reservation').then(() => alert("Reservation created successfully!"))
+      this.router.navigateByUrl('/reservations').then(() => alert("Reservation created successfully!"))
     })
   }
 

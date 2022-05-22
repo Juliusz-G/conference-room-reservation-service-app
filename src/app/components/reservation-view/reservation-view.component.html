@@ -4,27 +4,27 @@
       <h1>View Conference Room</h1>
     </div>
     <div class="d-flex justify-content-end">
-      <a routerLink="/reservation" class="btn btn-primary">Back</a>
+      <a routerLink="/reservations" class="btn btn-primary">Back</a>
     </div>
-  
+
     <div>
       <strong>ID:</strong>
       <p>{{ reservation.id }}</p>
     </div>
-  
+
     <div>
       <strong>Conference Room name:</strong>
       <p>{{ reservation?.conferenceRoom?.name }}</p>
     </div>
-  
+
     <div>
       <strong>Start date and time:</strong>
       <p>{{ reservation.startDateTime }}</p>
     </div>
-  
+
     <div>
       <strong>End date and time:</strong>
       <p>{{ reservation.endDateTime }}</p>
     </div>
-  
+
   </div>
