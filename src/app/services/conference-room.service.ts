@@ -15,7 +15,7 @@ export class ConferenceRoomService {
   }
 
   public getConferenceRoom(conferenceRoomId: number): Observable<ConferenceRoom> {
-    return this.http.get<ConferenceRoom>(`${this.apiUrl}/conference-room/${conferenceRoomId}`).pipe(catchError(this.errorHandler));
+    return this.http.get<ConferenceRoom>(`${this.apiUrl}/conference-rooms/${conferenceRoomId}`).pipe(catchError(this.errorHandler));
   }
 
   public getConferenceRooms(): Observable<ConferenceRoom[]> {
@@ -23,19 +23,19 @@ export class ConferenceRoomService {
   }
 
   public getConferenceRoomsForOrganisation(organisationId: number): Observable<ConferenceRoom[]> {
-    return this.http.get<ConferenceRoom[]>(`${this.apiUrl}/conference-room/all-for-organisation/${organisationId}`).pipe(catchError(this.errorHandler));
+    return this.http.get<ConferenceRoom[]>(`${this.apiUrl}/conference-rooms/all-for-organisation/${organisationId}`).pipe(catchError(this.errorHandler));
   }
 
   public createConferenceRoom(conferenceRoom: ConferenceRoom): Observable<ConferenceRoom> {
-    return this.http.post<ConferenceRoom>(`${this.apiUrl}/conference-room`, conferenceRoom).pipe(catchError(this.errorHandler));
+    return this.http.post<ConferenceRoom>(`${this.apiUrl}/conference-rooms`, conferenceRoom).pipe(catchError(this.errorHandler));
   }
 
   public updateConferenceRoom(conferenceRoomId: number, conferenceRoom: ConferenceRoom): Observable<ConferenceRoom> {
-    return this.http.put<ConferenceRoom>(`${this.apiUrl}/conference-room/${conferenceRoomId}`, conferenceRoom).pipe(catchError(this.errorHandler));
+    return this.http.put<ConferenceRoom>(`${this.apiUrl}/conference-rooms/${conferenceRoomId}`, conferenceRoom).pipe(catchError(this.errorHandler));
   }
 
   public deleteConferenceRoom(conferenceRoomId: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/conference-room/${conferenceRoomId}`).pipe(catchError(this.errorHandler));
+    return this.http.delete<void>(`${this.apiUrl}/conference-rooms/${conferenceRoomId}`).pipe(catchError(this.errorHandler));
   }
 
   errorHandler(error:any) {

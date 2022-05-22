@@ -13,11 +13,11 @@ export class OrganisationService {
   constructor(private http: HttpClient) { }
 
   public getOrganisation(organisationName: string): Observable<Organisation> {
-    return this.http.get<Organisation>(`${this.apiUrl}/organisation/${organisationName}`);
+    return this.http.get<Organisation>(`${this.apiUrl}/organisations/${organisationName}`);
   }
 
   public getOrganisationById(id: number): Observable<Organisation> {
-    return this.http.get<Organisation>(`${this.apiUrl}/organisation/${id}`);
+    return this.http.get<Organisation>(`${this.apiUrl}/organisations/${id}`);
   }
 
   public getAllOrganisations(): Observable<Organisation[]> {
@@ -25,15 +25,15 @@ export class OrganisationService {
   }
 
   public addOrganisation(organisation: Organisation): Observable<Organisation> {
-    return this.http.post<Organisation>(`${this.apiUrl}/organisation`, organisation);
+    return this.http.post<Organisation>(`${this.apiUrl}/organisations`, organisation);
   }
 
   public updateOrganisation(organisationId: number, organisation: Organisation): Observable<Organisation> {
-    return this.http.put<Organisation>(`${this.apiUrl}/organisation/${organisationId}`, organisation);
+    return this.http.put<Organisation>(`${this.apiUrl}/organisations/${organisationId}`, organisation);
   }
 
   public deleteOrganisation(organisationId: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/organisation/${organisationId}`);
+    return this.http.delete<void>(`${this.apiUrl}/organisations/${organisationId}`);
   }
 
 }

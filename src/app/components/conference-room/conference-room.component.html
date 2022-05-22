@@ -12,10 +12,10 @@
   <div class="d-flex justify-content-end">
     <a routerLink="/conference-room/create/" class="btn btn-success my-2 mx-2">Create New Conference Room</a>
   </div>
-    
-        
-  
-  
+
+
+
+
   <table class="table table-bordered">
     <tr>
       <th>Organisation</th>
@@ -29,10 +29,10 @@
       <!-- <th>ID</th>
       <th>Availability</th>
       <th>Reservation lists</th> -->
-      
+
     </tr>
     <tr *ngFor="let conferenceRoom of conferenceRooms">
-      <td>{{ conferenceRoom._organisation }}</td>
+      <td>{{ conferenceRoom.organisation }}</td>
       <td>{{ conferenceRoom.name }}</td>
       <td>{{ conferenceRoom.identifier }}</td>
       <td>{{ conferenceRoom.level }}</td>
@@ -49,7 +49,7 @@
         </ng-container>
       </ng-template>
       <td>{{ conferenceRoom.reservationList }}</td> -->
-      
+
       <td>
         <a href="#" [routerLink]="['/conference-room/', conferenceRoom.id, 'view']" class="btn btn-info">View</a>
         <a href="#" [routerLink]="['/conference-room/', conferenceRoom.id, 'edit']" class="btn btn-primary mx-2">Edit</a>
