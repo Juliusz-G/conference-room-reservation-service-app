@@ -2,6 +2,7 @@ import {Reservation} from "./reservation";
 import {Organisation} from "./organisation";
 
 export class ConferenceRoom {
+
   private _id: number;
   private _name: string;
   private _identifier: string;
@@ -11,6 +12,7 @@ export class ConferenceRoom {
   private _numberOfSittingPlaces: number;
   private _reservationList: Reservation[];
   public _organisation: Organisation;
+  private _organisationName: String;
 
   constructor(id: number, name: string, identifier: string, level: number, availability: boolean, numberOfStandingPlaces: number, numberOfSittingPlaces: number, reservationList: Reservation[], organisation: Organisation) {
     this._id = id;
@@ -96,4 +98,9 @@ export class ConferenceRoom {
   set organisation(value: Organisation) {
     this._organisation = value;
   }
+
+  get organisationName(): String {
+    return this._organisation.name;
+  }
+
 }
