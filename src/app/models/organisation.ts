@@ -1,13 +1,14 @@
 import {ConferenceRoom} from "./conference-room";
 
 export class Organisation {
+
   id!: number;
-  name!: string;
+  private _name!: string;
   description!: string;
   conferenceRooms: ConferenceRoom[] = [];
 
-  public getName(): String {
-    return this.name;
+  get name(): string {
+    return this._name;
   }
 
 }
