@@ -15,7 +15,7 @@
 
   <table class="table table-bordered">
     <tr>
-      <th>Reservation ID</th>
+      <th>Organisation</th>
       <th>Conference Room Name</th>
       <th>Start Time</th>
       <th>End Time</th>
@@ -23,16 +23,16 @@
     </tr>
     <tr *ngFor="let reservation of reservations">
       <td>
-        <h5>{{reservation?.id}}</h5>
+        <h5>{{reservation?.organisationName}}</h5>
       </td>
       <td>
         <h5>{{reservation?.conferenceRoomName}}</h5>
       </td>
       <td>
-        <h5>{{reservation?.startDateTime}}</h5>
+        <h5>{{reservation?.startDateTime | date: 'HH:mm dd-MM-yyyy'}}</h5>
       </td>
       <td>
-        <h5>{{reservation?.endDateTime}}</h5>
+        <h5>{{reservation?.endDateTime | date: 'HH:mm dd-MM-yyyy'}}</h5>
       </td>
       <td>
         <a href="#" [routerLink]="['/reservation/', reservation.id, 'view']" class="btn btn-info">View</a>

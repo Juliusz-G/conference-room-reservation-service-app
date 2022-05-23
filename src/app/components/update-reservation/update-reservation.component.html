@@ -9,24 +9,24 @@
 
   <form [formGroup]="form" (ngSubmit)="submit()">
       <div class="form-group">
-      <label for="conferenceRoom">Conference Room Name</label>
-      <input
-      formControlName="conferenceRoom"
-      id="conferenceRoom"
+      <label for="conferenceRoomName">Conference Room Name</label>
+      <input [attr.disabled]=true
+      formControlName="conferenceRoomName"
+      id="conferenceRoomName"
       type="text"
       class="form-control">
       <label for="startDateTime">Date and time START of reservation</label>
       <input
       formControlName="startDateTime"
       id="startDateTime"
-      type="text"
+      type="datetime-local"
       class="form-control"
       name="startDateTime">
       <label for="endDateTime">Date and time END of reservation</label>
       <input
       formControlName="endDateTime"
       id="endDateTime"
-      type="text"
+      type="datetime-local"
       class="form-control">
     </div>
 

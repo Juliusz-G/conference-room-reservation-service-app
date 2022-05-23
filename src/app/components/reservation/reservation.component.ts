@@ -35,7 +35,7 @@ export class ReservationComponent implements OnInit {
     const results: Reservation[] = [];
     for (const reservation of this.reservations) {
       if (reservation.conferenceRoom.name.toLowerCase().indexOf(key.toLowerCase()) !== -1
-      || reservation.startDateTime.toLowerCase().indexOf(key.toLowerCase()) !== -1) {
+      || reservation.organisationName.toLowerCase().indexOf(key.toLowerCase()) !== -1) {
         results.push(reservation);
       }
     }

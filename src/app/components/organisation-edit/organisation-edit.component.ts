@@ -40,6 +40,9 @@ export class OrganisationEditComponent implements OnInit {
     this.organisationService.updateOrganisation(this.organisationId, this.form.value).subscribe(() => {
       console.log('Organisation updated successfully!');
       this.router.navigateByUrl('/organisations').then(() => alert("Organisation updated successfully!"));
+    }, (response) => {
+      console.log('error', response);
+      alert('Organisation with that name already exists!');
     })
   }
 }

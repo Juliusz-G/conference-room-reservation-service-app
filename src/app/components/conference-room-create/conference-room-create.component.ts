@@ -32,7 +32,7 @@ export class ConferenceRoomCreateComponent implements OnInit {
 
     this.form = new FormGroup({
       organisationId: new FormControl(null, [Validators.required]),
-      conferenceRoomName: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(20)]),
+      name: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(20)]),
       identifier: new FormControl('', [Validators.required, Validators.pattern("\\d[.]\\d\\d")]),
       level: new FormControl('', [Validators.required, Validators.min(0), Validators.max(10)]),
       // availability: new FormControl('', [Validators.required]),
@@ -52,7 +52,10 @@ export class ConferenceRoomCreateComponent implements OnInit {
     console.log(this.form.value);
     this.conferenceRoomService.createConferenceRoom(this.form.value).subscribe(() => {
       console.log('Conference room created successfully!');
-      this.router.navigateByUrl('/conference-rooms').then(() => alert("Conference room created successfully!"));
+      this.router.navigateByUrl('/conference-rooms').then(() => alert("Conference room created successfully!"))
+    }, (response) => {
+      console.log('error', response);
+      alert(response.error.errorMessage);
     })
   }
 

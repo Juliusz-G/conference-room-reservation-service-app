@@ -9,11 +9,11 @@
         <option *ngFor="let organisation of organisations" [value]="organisation.id">
           {{ organisation.name.toUpperCase() }}</option>
       </select>
-      <label for="conferenceRoomName">Name:</label>
+      <label for="name">Name:</label>
       <input
         placeholder="Name of conference room"
-        formControlName="conferenceRoomName"
-        id="conferenceRoomName"
+        formControlName="name"
+        id="name"
         type="text"
         class="form-control">
       <label for="identifier">Identifier:</label>
