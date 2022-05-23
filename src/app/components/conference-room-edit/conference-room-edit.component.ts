@@ -46,7 +46,10 @@ export class ConferenceRoomEditComponent implements OnInit {
     console.log(this.form.value);
     this.conferenceRoomService.updateConferenceRoom(this.conferenceRoomId, this.form.value).subscribe(() => {
       console.log('Conference Room updated successfully!');
-      this.router.navigateByUrl('/conference-rooms').then(() => confirm("Conference room updated successfully!"));
+      this.router.navigateByUrl('/conference-rooms').then(() => alert("Conference room updated successfully!"));
+    }, (response) => {
+      console.log('error', response);
+      alert('Conference room already exists!');
     })
   }
 

@@ -22,8 +22,9 @@ export class ReservationService {
        return this.http.post<Reservation>(`${this.apiUrl}/reservations`, reservation);
   }
 
-  public updateReservation(reservationId: number, reservation: Reservation): Observable<Reservation> {
-       return this.http.put<Reservation>(`${this.apiUrl}/reservations/${reservationId}`, reservation);
+  public updateReservation(reservationId: number, body: { startDateTime: string,
+     endDateTime: string, conferenceRoomId?: number | string}): Observable<Reservation> {
+       return this.http.put<Reservation>(`${this.apiUrl}/reservations/${reservationId}`, body);
   }
 
   public deleteReservation(reservationId: number): Observable<void> {

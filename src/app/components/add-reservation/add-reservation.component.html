@@ -11,7 +11,7 @@
       </select>
       <label>Conference Room Name</label>
       <select class="form-select" aria-label="Default select example" formControlName="conferenceRoomId">
-        <option *ngFor="let conferenceRoom of conferenceRooms" [value]="conferenceRoom.id">
+        <option *ngFor="let conferenceRoom of orgConferenceRooms" [value]="conferenceRoom.id">
           {{ conferenceRoom.name.toUpperCase() }}</option>
       </select>
       <!-- <input placeholder="Name of conference room" formControlName="conferenceRoom" id="conferenceRoom" type="text"
@@ -32,7 +32,7 @@
     </div>
 
     <a routerLink="/reservations" class="btn btn-primary my-2">Back</a>
-    <button class="btn btn-primary mx-2 my-2" type="submit" >Submit</button>
+    <button class="btn btn-primary mx-2 my-2" type="submit" [disabled]="!form.valid" >Submit</button>
     <!-- [disabled]="!form.valid" -->
   </form>
 </div>

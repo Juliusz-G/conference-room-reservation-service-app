@@ -39,7 +39,8 @@ export class ConferenceRoomComponent implements OnInit {
     console.log(key);
     const results: ConferenceRoom[] = [];
     for (const conferenceRoom of this.conferenceRooms) {
-      if (conferenceRoom.name.toLowerCase().indexOf(key.toLowerCase()) !== -1) {
+      if (conferenceRoom.name.toLowerCase().indexOf(key.toLowerCase()) !== -1
+        || conferenceRoom.organisationName.toLowerCase().indexOf(key.toLowerCase()) !== -1) {
         results.push(conferenceRoom);
       }
     }

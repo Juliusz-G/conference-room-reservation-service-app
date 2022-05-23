@@ -19,6 +19,7 @@ export class AddReservationComponent implements OnInit {
   form!: FormGroup;
   conferenceRooms: ConferenceRoom[];
   organisations: Organisation[];
+  orgConferenceRooms: ConferenceRoom[];
 
   constructor(public reservationService: ReservationService,
       private router: Router,
@@ -30,18 +31,24 @@ export class AddReservationComponent implements OnInit {
       this.organisations = data;
       console.log(this.organisations);
     });
+
     this.conferenceRoomService.getConferenceRooms().subscribe((data: ConferenceRoom[])=>{
       this.conferenceRooms = data;
       console.log(this.conferenceRooms);
     });
 
     this.form = new FormGroup({
-      conferenceRoomId: new FormControl(''),
+      organisationId: new FormControl(null, [Validators.required]),
+      conferenceRoomId: new FormControl('', [Validators.required]),
       startDateTime: new FormControl('', [Validators.required]),
       endDateTime: new FormControl('', [Validators.required])
 
-      // Validators.pattern("\\d[.]\\d\\d")
-  });
+    });
+
+    this.form.get('organisationId')?.valueChanges.subscribe(value => {
+      const selectedOrg = this.organisations.find(org => {console.log('org', org, value); return org.id == value } )
+      this.orgConferenceRooms = this.conferenceRooms.filter(room => room.organisationName === selectedOrg?.name );
+    })
 }
 
   get f() {
@@ -54,6 +61,9 @@ export class AddReservationComponent implements OnInit {
     this.reservationService.addReservation({...this.form.value, conferenceRoom: selectedRoom}).subscribe(() => {
       console.log('Reservation created successfully!');
       this.router.navigateByUrl('/reservations').then(() => alert("Reservation created successfully!"))
+    }, (response) => {
+      console.log('error', response.error);
+      alert(response.error.errorMessage);
     })
   }
 
